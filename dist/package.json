@@ -1,0 +1,30 @@
+{
+  "name": "ng-chat",
+  "version": "3.0.3",
+  "peerDependencies": {
+    "@angular/common": "*",
+    "@angular/core": "*",
+    "@angular/forms": "*",
+    "rxjs": "*"
+  },
+  "description": "A simple facebook/linkedin lookalike chat module for Angular applications.",
+  "author": "Rafael Carvalho",
+  "license": "MIT",
+  "homepage": "https://github.com/eclettica/ng-chat",
+  "bugs": {
+    "url": "https://github.com/eclettica/ng-chat/issues"
+  },
+  "dependencies": {
+    "tslib": "^1.10.0"
+  },
+  "main": "bundles/ng-chat.umd.js",
+  "module": "fesm5/ng-chat.js",
+  "es2015": "fesm2015/ng-chat.js",
+  "esm5": "esm5/ng-chat.js",
+  "esm2015": "esm2015/ng-chat.js",
+  "fesm5": "fesm5/ng-chat.js",
+  "fesm2015": "fesm2015/ng-chat.js",
+  "typings": "ng-chat.d.ts",
+  "metadata": "ng-chat.metadata.json",
+  "sideEffects": false
+}
