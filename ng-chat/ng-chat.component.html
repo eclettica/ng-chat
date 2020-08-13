@@ -1,6 +1,7 @@
 <link *ngIf="customTheme" rel="stylesheet" [href]='customTheme | sanitize'>
 
 <div id="ng-chat" *ngIf="!isDisabled && isBootstrapped && !unsupportedViewport" [ngClass]="theme">
+    PROVA
     <ng-chat-friends-list
         [localization]="localization"
         [shouldDisplay]="!hideFriendsList"

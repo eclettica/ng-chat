@@ -34,16 +34,17 @@
     "linux-clean": "rm -f *.ngsummary.json *.ngfactory.ts",
     "build-legacy": "npm run templates && npm run transpile && npm run package && npm run minify && npm run clean",
     "linux-build-legacy": "npm run templates && npm run transpile && npm run package && npm run minify && npm run linux-clean",
-    "copy-readme": "copy ..\\README.md dist\\README.md",
+    "copy-readme": "copy README.md dist\\README.md",
     "build": "ng-packagr -p package.json",
-    "build-package": "ng-packagr -p package.json && npm run copy-readme"
+    "build-package": "ng-packagr -p package.json && npm run copy-readme",
+    "prepare": "npm run build"
   },
   "description": "A simple facebook/linkedin lookalike chat module for Angular applications.",
   "author": "Rafael Carvalho",
   "license": "MIT",
-  "homepage": "https://github.com/rpaschoal/ng-chat",
+  "homepage": "https://github.com/eclettica/ng-chat",
   "bugs": {
-    "url": "https://github.com/rpaschoal/ng-chat/issues"
+    "url": "https://github.com/eclettica/ng-chat/issues"
   },
   "ngPackage": {
     "lib": {
