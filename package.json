@@ -37,7 +37,8 @@
     "copy-readme": "copy README.md dist\\README.md",
     "build": "ng-packagr -p package.json",
     "build-package": "ng-packagr -p package.json && npm run copy-readme",
-    "prepare": "npm install && npm run build"
+    "prepublish": "npm install",
+    "prepare": "npm run build"
   },
   "description": "A simple facebook/linkedin lookalike chat module for Angular applications.",
   "author": "Rafael Carvalho",
