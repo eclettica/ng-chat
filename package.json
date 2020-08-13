@@ -1,0 +1,54 @@
+{
+  "name": "ng-chat",
+  "version": "3.0.3",
+  "peerDependencies": {
+    "@angular/common": "*",
+    "@angular/core": "*",
+    "@angular/forms": "*",
+    "rxjs": "*"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^0.901.6",
+    "@angular/common": "^9.1.2",
+    "@angular/compiler": "^9.1.2",
+    "@angular/compiler-cli": "^9.1.2",
+    "@angular/core": "^9.1.2",
+    "@angular/forms": "^9.1.2",
+    "@angular/platform-browser": "^9.1.2",
+    "gulp": "~4.0.2",
+    "gulp-inline-ng2-template": "^5.0.1",
+    "ng-packagr": "^9.1.1",
+    "rollup": "^2.6.1",
+    "rxjs": "^6.5.5",
+    "tsickle": "^0.38.1",
+    "typescript": "~3.8.3",
+    "uglify-js": "^3.9.1",
+    "zone.js": "^0.10.3"
+  },
+  "scripts": {
+    "templates": "gulp inline-templates",
+    "transpile": "ngc",
+    "package": "rollup -c",
+    "minify": "uglifyjs dist/bundles/ng-chat.umd.js --screw-ie8 --compress --mangle --comments --output dist/bundles/ng-chat.umd.min.js",
+    "clean": "del /S *.ngsummary.json del /S *.ngfactory.ts",
+    "linux-clean": "rm -f *.ngsummary.json *.ngfactory.ts",
+    "build-legacy": "npm run templates && npm run transpile && npm run package && npm run minify && npm run clean",
+    "linux-build-legacy": "npm run templates && npm run transpile && npm run package && npm run minify && npm run linux-clean",
+    "copy-readme": "copy ..\\README.md dist\\README.md",
+    "build": "ng-packagr -p package.json",
+    "build-package": "ng-packagr -p package.json && npm run copy-readme"
+  },
+  "description": "A simple facebook/linkedin lookalike chat module for Angular applications.",
+  "author": "Rafael Carvalho",
+  "license": "MIT",
+  "homepage": "https://github.com/rpaschoal/ng-chat",
+  "bugs": {
+    "url": "https://github.com/rpaschoal/ng-chat/issues"
+  },
+  "ngPackage": {
+    "lib": {
+      "entryFile": "index.ts"
+    }
+  },
+  "dependencies": {}
+}
