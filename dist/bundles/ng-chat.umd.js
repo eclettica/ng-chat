@@ -856,6 +856,10 @@
         NgChat.prototype.onWindowChatClosed = function (payload) {
             var _this = this;
             var closedWindow = payload.closedWindow, closedViaEscapeKey = payload.closedViaEscapeKey;
+            if (this.onBeforeParticipantChatClosed != undefined && this.onBeforeParticipantChatClosed) {
+                if (!this.onBeforeParticipantChatClosed(closedWindow.participant))
+                    return;
+            }
             if (closedViaEscapeKey) {
                 var closestWindow = this.getClosestWindow(closedWindow);
                 if (closestWindow) {
@@ -1001,6 +1005,9 @@
         __decorate([
             core.Input()
         ], NgChat.prototype, "isViewportOnMobileEnabled", void 0);
+        __decorate([
+            core.Input()
+        ], NgChat.prototype, "onBeforeParticipantChatClosed", void 0);
         __decorate([
             core.Output()
         ], NgChat.prototype, "onParticipantClicked", void 0);
