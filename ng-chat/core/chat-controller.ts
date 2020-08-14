@@ -7,4 +7,6 @@ export interface IChatController
     triggerCloseChatWindow(userId: any): void;
 
     triggerToggleChatWindowVisibility(userId: any): void;
+
+    fetchFriendsList(isBootstrapping: boolean): void;
 }
