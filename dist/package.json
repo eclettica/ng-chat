@@ -1,6 +1,7 @@
 {
   "name": "ng-chat",
   "version": "3.0.3",
+  "main": "bundles/ng-chat.umd.js",
   "peerDependencies": {
     "@angular/common": "*",
     "@angular/core": "*",
@@ -17,7 +18,6 @@
   "dependencies": {
     "tslib": "^1.10.0"
   },
-  "main": "bundles/ng-chat.umd.js",
   "module": "fesm5/ng-chat.js",
   "es2015": "fesm2015/ng-chat.js",
   "esm5": "esm5/ng-chat.js",
