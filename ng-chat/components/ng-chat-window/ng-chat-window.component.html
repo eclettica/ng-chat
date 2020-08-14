@@ -36,7 +36,7 @@
 					<i class="user-icon"></i>
 				</div>
 				<img *ngIf="getChatWindowAvatar(window.participant, message)" alt="" class="avatar" height="30" width="30" [src]="getChatWindowAvatar(window.participant, message) | sanitize" />
-				<img *ngIf="getChatWindowAvatarSrc(window.participant, message)" alt="" class="avatar" height="30" width="30" [src]="getChatWindowAvatarSrc(window.participant, message) | secure" />
+				<img *ngIf="getChatWindowAvatarSrc(window.participant, message)" alt="" class="avatar" height="30" width="30" [src]="getChatWindowAvatarSrc(window.participant, message) | secure | async" />
 				<span *ngIf="window.participant.participantType == ChatParticipantType.Group" class="ng-chat-participant-name">{{window.participant | groupMessageDisplayName:message}}</span>
 			</ng-container>
 			<ng-container [ngSwitch]="message.type">
