@@ -136,6 +136,23 @@ export class NgChatWindowComponent {
         return null;
     }
 
+    getChatWindowAvatarSrc(participant: IChatParticipant, message: Message): string | null
+    {
+        if (participant.participantType == ChatParticipantType.User)
+        {
+            return participant.avatarSrc;
+        }
+        // else if (participant.participantType == ChatParticipantType.Group)
+        // {
+        //     let group = participant as Group;
+        //     let userIndex = group.chattingTo.findIndex(x => x.id == message.fromId);
+
+        //     return group.chattingTo[userIndex >= 0 ? userIndex : 0].avatar;
+        // }
+
+        return null;
+    }
+
     isUploadingFile(window: Window): boolean
     {
         const fileUploadInstanceId = this.getUniqueFileUploadInstanceId(window);

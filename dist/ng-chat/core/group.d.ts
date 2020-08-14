@@ -9,5 +9,6 @@ export declare class Group implements IChatParticipant {
     readonly participantType: ChatParticipantType;
     status: ChatParticipantStatus;
     avatar: string | null;
+    avatarSrc: string | null;
     displayName: string;
 }

@@ -9,4 +9,5 @@ export class User implements IChatParticipant
     public displayName: string;
     public status: ChatParticipantStatus;
     public avatar: string;
+    public avatarSrc: string;
 }

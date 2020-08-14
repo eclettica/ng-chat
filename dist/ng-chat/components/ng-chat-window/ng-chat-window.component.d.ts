@@ -45,6 +45,7 @@ export declare class NgChatWindowComponent {
     defaultWindowOptions(currentWindow: Window): IChatOption[];
     isAvatarVisible(window: Window, message: Message, index: number): boolean;
     getChatWindowAvatar(participant: IChatParticipant, message: Message): string | null;
+    getChatWindowAvatarSrc(participant: IChatParticipant, message: Message): string | null;
     isUploadingFile(window: Window): boolean;
     getUniqueFileUploadInstanceId(window: Window): string;
     unreadMessagesTotal(window: Window): string;

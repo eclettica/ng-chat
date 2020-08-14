@@ -7,4 +7,5 @@ export declare class User implements IChatParticipant {
     displayName: string;
     status: ChatParticipantStatus;
     avatar: string;
+    avatarSrc: string;
 }

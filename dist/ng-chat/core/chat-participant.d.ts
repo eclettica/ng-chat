@@ -5,5 +5,6 @@ export interface IChatParticipant {
     readonly id: any;
     readonly status: ChatParticipantStatus;
     readonly avatar: string | null;
+    readonly avatarSrc: string | null;
     readonly displayName: string;
 }

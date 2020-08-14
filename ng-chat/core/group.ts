@@ -22,5 +22,6 @@ export class Group implements IChatParticipant
 
     public status: ChatParticipantStatus;
     public avatar: string | null;
+    public avatarSrc: string | null;
     public displayName: string;
 }
