@@ -19,7 +19,7 @@ export class SecurePipe implements PipeTransform {
   
         // The next and error callbacks from the observer
         const {next, error} = observer;
-  
+        console.log('secure pipe');
         this.http.get(url, {responseType: 'blob'}).subscribe(response => {
           const reader = new FileReader();
           reader.readAsDataURL(response);

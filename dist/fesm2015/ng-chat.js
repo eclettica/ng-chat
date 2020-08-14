@@ -864,6 +864,7 @@ let SecurePipe = class SecurePipe {
             observer.next('data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
             // The next and error callbacks from the observer
             const { next, error } = observer;
+            console.log('secure pipe');
             this.http.get(url, { responseType: 'blob' }).subscribe(response => {
                 const reader = new FileReader();
                 reader.readAsDataURL(response);
