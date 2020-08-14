@@ -642,7 +642,8 @@ var NgChat = /** @class */ (function () {
         var closedWindow = payload.closedWindow, closedViaEscapeKey = payload.closedViaEscapeKey;
         console.log('onWindowChatClosed');
         if (this.beforeParteciantChatClosed != undefined && this.beforeParteciantChatClosed) {
-            if (!this.beforeParteciantChatClosed(closedWindow.participant))
+            var l = this.beforeParteciantChatClosed(closedWindow.participant);
+            if (l == false)
                 return;
         }
         if (closedViaEscapeKey) {

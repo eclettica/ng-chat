@@ -734,7 +734,8 @@ export class NgChat implements OnInit, IChatController {
         const { closedWindow, closedViaEscapeKey } = payload;
         console.log('onWindowChatClosed');
         if(this.beforeParteciantChatClosed != undefined && this.beforeParteciantChatClosed) {
-            if(!this.beforeParteciantChatClosed(closedWindow.participant))
+            const l = this.beforeParteciantChatClosed(closedWindow.participant);
+            if(l == false)
                 return;
         }
         if (closedViaEscapeKey) {
