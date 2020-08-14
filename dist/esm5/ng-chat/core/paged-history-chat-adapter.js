@@ -1,0 +1,15 @@
+import { __extends } from "tslib";
+import { ChatAdapter } from "./chat-adapter";
+/**
+ * @description Chat Adapter decorator class that adds pagination to load the history of messagesr.
+ * You will need an existing @see ChatAdapter implementation
+ */
+var PagedHistoryChatAdapter = /** @class */ (function (_super) {
+    __extends(PagedHistoryChatAdapter, _super);
+    function PagedHistoryChatAdapter() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return PagedHistoryChatAdapter;
+}(ChatAdapter));
+export { PagedHistoryChatAdapter };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicGFnZWQtaGlzdG9yeS1jaGF0LWFkYXB0ZXIuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9uZy1jaGF0LyIsInNvdXJjZXMiOlsibmctY2hhdC9jb3JlL3BhZ2VkLWhpc3RvcnktY2hhdC1hZGFwdGVyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFHQSxPQUFPLEVBQUUsV0FBVyxFQUFFLE1BQU0sZ0JBQWdCLENBQUM7QUFFN0M7OztHQUdHO0FBQ0g7SUFBc0QsMkNBQVc7SUFBakU7O0lBR0EsQ0FBQztJQUFELDhCQUFDO0FBQUQsQ0FBQyxBQUhELENBQXNELFdBQVcsR0FHaEUiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBPYnNlcnZhYmxlIH0gZnJvbSAncnhqcyc7XG5pbXBvcnQgeyBNZXNzYWdlIH0gZnJvbSBcIi4vbWVzc2FnZVwiO1xuaW1wb3J0IHsgVXNlciB9IGZyb20gXCIuL3VzZXJcIjtcbmltcG9ydCB7IENoYXRBZGFwdGVyIH0gZnJvbSBcIi4vY2hhdC1hZGFwdGVyXCI7XG5cbi8qKlxuICogQGRlc2NyaXB0aW9uIENoYXQgQWRhcHRlciBkZWNvcmF0b3IgY2xhc3MgdGhhdCBhZGRzIHBhZ2luYXRpb24gdG8gbG9hZCB0aGUgaGlzdG9yeSBvZiBtZXNzYWdlc3IuIFxuICogWW91IHdpbGwgbmVlZCBhbiBleGlzdGluZyBAc2VlIENoYXRBZGFwdGVyIGltcGxlbWVudGF0aW9uXG4gKi9cbmV4cG9ydCBhYnN0cmFjdCBjbGFzcyBQYWdlZEhpc3RvcnlDaGF0QWRhcHRlciBleHRlbmRzIENoYXRBZGFwdGVyXG57ICAgXG4gICAgYWJzdHJhY3QgZ2V0TWVzc2FnZUhpc3RvcnlCeVBhZ2UoZGVzdGluYXRhcnlJZDogYW55LCBzaXplOiBudW1iZXIsIHBhZ2U6IG51bWJlcikgOiBPYnNlcnZhYmxlPE1lc3NhZ2VbXT47XG59XG4iXX0=

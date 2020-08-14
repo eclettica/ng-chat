@@ -1,0 +1,6 @@
+export var ChatParticipantType;
+(function (ChatParticipantType) {
+    ChatParticipantType[ChatParticipantType["User"] = 0] = "User";
+    ChatParticipantType[ChatParticipantType["Group"] = 1] = "Group";
+})(ChatParticipantType || (ChatParticipantType = {}));
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY2hhdC1wYXJ0aWNpcGFudC10eXBlLmVudW0uanMiLCJzb3VyY2VSb290Ijoibmc6Ly9uZy1jaGF0LyIsInNvdXJjZXMiOlsibmctY2hhdC9jb3JlL2NoYXQtcGFydGljaXBhbnQtdHlwZS5lbnVtLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE1BQU0sQ0FBTixJQUFZLG1CQUlYO0FBSkQsV0FBWSxtQkFBbUI7SUFFM0IsNkRBQUksQ0FBQTtJQUNKLCtEQUFLLENBQUE7QUFDVCxDQUFDLEVBSlcsbUJBQW1CLEtBQW5CLG1CQUFtQixRQUk5QiIsInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCBlbnVtIENoYXRQYXJ0aWNpcGFudFR5cGVcbntcbiAgICBVc2VyLFxuICAgIEdyb3VwXG59XG4iXX0=
