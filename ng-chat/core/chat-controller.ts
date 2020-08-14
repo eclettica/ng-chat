@@ -1,4 +1,5 @@
 import { User } from './user';
+import { IChatParticipant } from './chat-participant';
 
 export interface IChatController
 {
@@ -9,4 +10,7 @@ export interface IChatController
     triggerToggleChatWindowVisibility(userId: any): void;
 
     fetchFriendsList(isBootstrapping: boolean): void;
+
+    setBeforeParteciantChatClosed(func: any): void;
+
 }

@@ -155,9 +155,8 @@ export class NgChat implements OnInit, IChatController {
     
     @Input()
     public isViewportOnMobileEnabled: boolean = false;
-    
-    @Input()
-    public onBeforeParticipantChatClosed: (participant: IChatParticipant) => boolean;
+
+    public beforeParteciantChatClosed: (arg0: IChatParticipant) => boolean;
      
     @Output()
     public onParticipantClicked: EventEmitter<IChatParticipant> = new EventEmitter<IChatParticipant>();
@@ -733,8 +732,8 @@ export class NgChat implements OnInit, IChatController {
 
     onWindowChatClosed(payload: { closedWindow: Window, closedViaEscapeKey: boolean }): void {
         const { closedWindow, closedViaEscapeKey } = payload;
-        if(this.onBeforeParticipantChatClosed != undefined && this.onBeforeParticipantChatClosed) {
-            if(!this.onBeforeParticipantChatClosed(closedWindow.participant))
+        if(this.beforeParteciantChatClosed != undefined && this.beforeParteciantChatClosed) {
+            if(!this.beforeParteciantChatClosed(closedWindow.participant))
                 return;
         }
         if (closedViaEscapeKey) {
@@ -804,5 +803,9 @@ export class NgChat implements OnInit, IChatController {
                 chatWindow.onChatWindowClicked(openedWindow);
             }
         }
+    }
+
+    setBeforeParteciantChatClosed(func: any) {
+        this.beforeParteciantChatClosed = func;
     }
 }

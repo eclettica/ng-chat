@@ -640,8 +640,8 @@ var NgChat = /** @class */ (function () {
     NgChat.prototype.onWindowChatClosed = function (payload) {
         var _this = this;
         var closedWindow = payload.closedWindow, closedViaEscapeKey = payload.closedViaEscapeKey;
-        if (this.onBeforeParticipantChatClosed != undefined && this.onBeforeParticipantChatClosed) {
-            if (!this.onBeforeParticipantChatClosed(closedWindow.participant))
+        if (this.beforeParteciantChatClosed != undefined && this.beforeParteciantChatClosed) {
+            if (!this.beforeParteciantChatClosed(closedWindow.participant))
                 return;
         }
         if (closedViaEscapeKey) {
@@ -692,6 +692,9 @@ var NgChat = /** @class */ (function () {
                 chatWindow.onChatWindowClicked(openedWindow);
             }
         }
+    };
+    NgChat.prototype.setBeforeParteciantChatClosed = function (func) {
+        this.beforeParteciantChatClosed = func;
     };
     NgChat.ctorParameters = function () { return [
         { type: HttpClient }
@@ -789,9 +792,6 @@ var NgChat = /** @class */ (function () {
     __decorate([
         Input()
     ], NgChat.prototype, "isViewportOnMobileEnabled", void 0);
-    __decorate([
-        Input()
-    ], NgChat.prototype, "onBeforeParticipantChatClosed", void 0);
     __decorate([
         Output()
     ], NgChat.prototype, "onParticipantClicked", void 0);

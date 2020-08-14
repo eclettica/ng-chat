@@ -55,7 +55,7 @@ export declare class NgChat implements OnInit, IChatController {
     messageDatePipeFormat: string;
     showMessageDate: boolean;
     isViewportOnMobileEnabled: boolean;
-    onBeforeParticipantChatClosed: (participant: IChatParticipant) => boolean;
+    beforeParteciantChatClosed: (arg0: IChatParticipant) => boolean;
     onParticipantClicked: EventEmitter<IChatParticipant>;
     onParticipantChatOpened: EventEmitter<IChatParticipant>;
     onParticipantChatClosed: EventEmitter<IChatParticipant>;
@@ -123,4 +123,5 @@ export declare class NgChat implements OnInit, IChatController {
     triggerOpenChatWindow(user: User): void;
     triggerCloseChatWindow(userId: any): void;
     triggerToggleChatWindowVisibility(userId: any): void;
+    setBeforeParteciantChatClosed(func: any): void;
 }
