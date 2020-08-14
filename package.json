@@ -1,8 +1,8 @@
 {
   "name": "ng-chat",
   "version": "3.0.3",
-"main": "dist/bundles/ng-chat.umd.min.js",
-"peerDependencies": {
+  "main": "dist/bundles/ng-chat.umd.min.js",
+  "peerDependencies": {
     "@angular/common": "*",
     "@angular/core": "*",
     "@angular/forms": "*",

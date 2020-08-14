@@ -361,7 +361,7 @@ export class NgChat implements OnInit, IChatController {
     }
 
     // Sends a request to load the friends list
-    private fetchFriendsList(isBootstrapping: boolean): void
+    public fetchFriendsList(isBootstrapping: boolean): void
     {
         this.adapter.listFriends()
         .pipe(
