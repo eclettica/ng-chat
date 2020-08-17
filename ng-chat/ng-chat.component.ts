@@ -730,11 +730,11 @@ export class NgChat implements OnInit, IChatController {
         this.markMessagesAsRead(messagesSeen);
     }
 
-    onWindowChatClosed(payload: { closedWindow: Window, closedViaEscapeKey: boolean }): void {
+    async onWindowChatClosed(payload: { closedWindow: Window, closedViaEscapeKey: boolean }) {
         const { closedWindow, closedViaEscapeKey } = payload;
         console.log('onWindowChatClosed');
         if(this.beforeParteciantChatClosed != undefined && this.beforeParteciantChatClosed) {
-            const l = this.beforeParteciantChatClosed(closedWindow.participant);
+            const l = await this.beforeParteciantChatClosed(closedWindow.participant);
             if(l == false)
                 return;
         }

@@ -854,26 +854,38 @@
             this.markMessagesAsRead(messagesSeen);
         };
         NgChat.prototype.onWindowChatClosed = function (payload) {
-            var _this = this;
-            var closedWindow = payload.closedWindow, closedViaEscapeKey = payload.closedViaEscapeKey;
-            console.log('onWindowChatClosed');
-            if (this.beforeParteciantChatClosed != undefined && this.beforeParteciantChatClosed) {
-                var l = this.beforeParteciantChatClosed(closedWindow.participant);
-                if (l == false)
-                    return;
-            }
-            if (closedViaEscapeKey) {
-                var closestWindow = this.getClosestWindow(closedWindow);
-                if (closestWindow) {
-                    this.focusOnWindow(closestWindow, function () { _this.closeWindow(closedWindow); });
-                }
-                else {
-                    this.closeWindow(closedWindow);
-                }
-            }
-            else {
-                this.closeWindow(closedWindow);
-            }
+            return __awaiter(this, void 0, void 0, function () {
+                var closedWindow, closedViaEscapeKey, l, closestWindow;
+                var _this = this;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            closedWindow = payload.closedWindow, closedViaEscapeKey = payload.closedViaEscapeKey;
+                            console.log('onWindowChatClosed');
+                            if (!(this.beforeParteciantChatClosed != undefined && this.beforeParteciantChatClosed)) return [3 /*break*/, 2];
+                            return [4 /*yield*/, this.beforeParteciantChatClosed(closedWindow.participant)];
+                        case 1:
+                            l = _a.sent();
+                            if (l == false)
+                                return [2 /*return*/];
+                            _a.label = 2;
+                        case 2:
+                            if (closedViaEscapeKey) {
+                                closestWindow = this.getClosestWindow(closedWindow);
+                                if (closestWindow) {
+                                    this.focusOnWindow(closestWindow, function () { _this.closeWindow(closedWindow); });
+                                }
+                                else {
+                                    this.closeWindow(closedWindow);
+                                }
+                            }
+                            else {
+                                this.closeWindow(closedWindow);
+                            }
+                            return [2 /*return*/];
+                    }
+                });
+            });
         };
         NgChat.prototype.onWindowTabTriggered = function (payload) {
             var triggeringWindow = payload.triggeringWindow, shiftKeyPressed = payload.shiftKeyPressed;

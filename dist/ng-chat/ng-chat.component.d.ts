@@ -113,7 +113,7 @@ export declare class NgChat implements OnInit, IChatController {
     onWindowChatClosed(payload: {
         closedWindow: Window;
         closedViaEscapeKey: boolean;
-    }): void;
+    }): Promise<void>;
     onWindowTabTriggered(payload: {
         triggeringWindow: Window;
         shiftKeyPressed: boolean;

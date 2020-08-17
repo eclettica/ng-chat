@@ -594,25 +594,27 @@ let NgChat = class NgChat {
         this.markMessagesAsRead(messagesSeen);
     }
     onWindowChatClosed(payload) {
-        const { closedWindow, closedViaEscapeKey } = payload;
-        console.log('onWindowChatClosed');
-        if (this.beforeParteciantChatClosed != undefined && this.beforeParteciantChatClosed) {
-            const l = this.beforeParteciantChatClosed(closedWindow.participant);
-            if (l == false)
-                return;
-        }
-        if (closedViaEscapeKey) {
-            let closestWindow = this.getClosestWindow(closedWindow);
-            if (closestWindow) {
-                this.focusOnWindow(closestWindow, () => { this.closeWindow(closedWindow); });
+        return __awaiter(this, void 0, void 0, function* () {
+            const { closedWindow, closedViaEscapeKey } = payload;
+            console.log('onWindowChatClosed');
+            if (this.beforeParteciantChatClosed != undefined && this.beforeParteciantChatClosed) {
+                const l = yield this.beforeParteciantChatClosed(closedWindow.participant);
+                if (l == false)
+                    return;
+            }
+            if (closedViaEscapeKey) {
+                let closestWindow = this.getClosestWindow(closedWindow);
+                if (closestWindow) {
+                    this.focusOnWindow(closestWindow, () => { this.closeWindow(closedWindow); });
+                }
+                else {
+                    this.closeWindow(closedWindow);
+                }
             }
             else {
                 this.closeWindow(closedWindow);
             }
-        }
-        else {
-            this.closeWindow(closedWindow);
-        }
+        });
     }
     onWindowTabTriggered(payload) {
         const { triggeringWindow, shiftKeyPressed } = payload;
