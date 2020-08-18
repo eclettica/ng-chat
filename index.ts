@@ -10,6 +10,8 @@ export * from './ng-chat/core/chat-controller';
 export * from './ng-chat/core/paged-history-chat-adapter';
 export * from './ng-chat/core/theme.enum';
 export * from './ng-chat/core/chat-option';
+export * from './ng-chat/core/window-option';
+export * from './ng-chat/core/window-button';
 export * from './ng-chat/core/group';
 export * from './ng-chat/core/chat-participant';
 export * from './ng-chat/core/chat-group-adapter';

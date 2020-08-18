@@ -7,11 +7,13 @@ import { ScrollDirection } from "../../core/scroll-direction.enum";
 import { Localization } from '../../core/localization';
 import { IFileUploadAdapter } from '../../core/file-upload-adapter';
 import { IChatOption } from '../../core/chat-option';
+import { WindowOption } from '../../core/window-option';
 import { ChatParticipantType } from "../../core/chat-participant-type.enum";
 import { IChatParticipant } from "../../core/chat-participant";
 import { chatParticipantStatusDescriptor } from '../../core/chat-participant-status-descriptor';
 export declare class NgChatWindowComponent {
     constructor();
+    windowOptions: WindowOption | null;
     fileUploadAdapter: IFileUploadAdapter;
     window: Window;
     userId: any;

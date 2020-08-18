@@ -3,6 +3,7 @@ import { User } from "./user";
 import { ChatParticipantStatus } from "./chat-participant-status.enum";
 import { IChatParticipant } from "./chat-participant";
 import { ChatParticipantType } from "./chat-participant-type.enum";
+import { WindowOption } from "./window-option";
 
 export class Group implements IChatParticipant
 {
@@ -24,4 +25,5 @@ export class Group implements IChatParticipant
     public avatar: string | null;
     public avatarSrc: string | null;
     public displayName: string;
+    public windowOptions: WindowOption|null = null;
 }
