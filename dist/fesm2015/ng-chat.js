@@ -84,6 +84,8 @@ class Window {
         this.isCollapsed = isCollapsed;
         this.hasMoreMessages = false;
         this.historyPage = 0;
+        if (this.participant.windowOptions != undefined && this.participant.windowOptions != null)
+            this.participant.windowOptions.chattingTo = this;
     }
 }
 
