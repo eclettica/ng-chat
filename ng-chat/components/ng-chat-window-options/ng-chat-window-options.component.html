@@ -1,6 +1,6 @@
 
 <div *ngIf="options && options.buttons && options.buttons.length > 0 && options.buttons.length < 3" class="ng-chat-options-content-reduced">
-	<a *ngFor="let button of options?.buttons; let i = index" [ngClass]="'primary-text'" (click)="onOptionClicked(options, button)">
+	<a *ngFor="let button of options?.buttons; let i = index" [ngClass]="{'primary-text': true, 'disabled': button.enableButton() == false}" (click)="onOptionClicked(options, button)">
 		<mat-icon *ngIf="button.showIcon" class="material-icons">{{button.icon}}</mat-icon>
 		<span *ngIf="!button.showIcon" class="material-icons">{{button.title}}</span>
 	</a>
@@ -10,7 +10,7 @@
 			<span class="primary-text">...</span>
 		</button>
 	<div class="ng-chat-options-content primary-background shadowed">
-		<a *ngFor="let button of options?.buttons; let i = index" [ngClass]="'primary-text'" (click)="onOptionClicked(options, button)">
+		<a *ngFor="let button of options?.buttons; let i = index" [ngClass]="{'primary-text': true, 'disabled': button.enableButton() == false}" (click)="onOptionClicked(options, button)">
 			<mat-icon *ngIf="button.showIcon" class="material-icons">{{button.icon}}</mat-icon>
 			<span *ngIf="!button.showIcon" class="material-icons">{{button.title}}</span>
 		</a>

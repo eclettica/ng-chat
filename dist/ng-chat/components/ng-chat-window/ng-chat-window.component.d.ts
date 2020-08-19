@@ -1,4 +1,4 @@
-import { EventEmitter, ElementRef } from '@angular/core';
+import { EventEmitter, ElementRef, OnInit } from '@angular/core';
 import { Message } from "../../core/message";
 import { MessageType } from "../../core/message-type.enum";
 import { Window } from "../../core/window";
@@ -10,8 +10,10 @@ import { IChatOption } from '../../core/chat-option';
 import { ChatParticipantType } from "../../core/chat-participant-type.enum";
 import { IChatParticipant } from "../../core/chat-participant";
 import { chatParticipantStatusDescriptor } from '../../core/chat-participant-status-descriptor';
-export declare class NgChatWindowComponent {
+export declare class NgChatWindowComponent implements OnInit {
+    windowClass: string | undefined;
     constructor();
+    ngOnInit(): void;
     fileUploadAdapter: IFileUploadAdapter;
     window: Window;
     userId: any;

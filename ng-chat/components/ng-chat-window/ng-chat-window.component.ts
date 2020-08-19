@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewEncapsulation, ViewChild, ElementRef, OnInit } from '@angular/core';
 
 import { Message } from "../../core/message";
 import { MessageType } from "../../core/message-type.enum";
@@ -21,13 +21,19 @@ import { chatParticipantStatusDescriptor } from '../../core/chat-participant-sta
     styleUrls: ['./ng-chat-window.component.css'],
     encapsulation: ViewEncapsulation.None
 })
-export class NgChatWindowComponent {
+export class NgChatWindowComponent implements OnInit {
+    windowClass: string|undefined = '';
     constructor() {
         //this.windowOptions = this.window.participant.windowOptions;
      }
 
      //windowOptions: WindowOption | null;
 
+     ngOnInit() {
+         this.windowClass =  this.window?.participant?.windowOptions?.windowClass;
+         if(this.windowClass == undefined || this.windowClass == null)
+            this.windowClass ='';
+     }
 
     @Input()
     public fileUploadAdapter: IFileUploadAdapter;

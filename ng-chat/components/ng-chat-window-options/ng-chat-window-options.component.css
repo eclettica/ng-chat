@@ -43,6 +43,11 @@
     display: block;
 }
 
+.ng-chat-options-content a.disabled mat-icon,
+.ng-chat-options-content-reduced a.disabled mat-icon {
+    color: #bababa
+}
+
 /* Mobile viewport only */
 @media only screen and (max-width: 581px) { 
     .ng-chat-options-content {
