@@ -60,6 +60,10 @@ export declare class NgChat implements OnInit, IChatController {
     onParticipantChatOpened: EventEmitter<IChatParticipant>;
     onParticipantChatClosed: EventEmitter<IChatParticipant>;
     onMessagesSeen: EventEmitter<Message[]>;
+    onParticipantToggle: EventEmitter<{
+        participant: IChatParticipant;
+        isCollapsed: boolean;
+    }>;
     private browserNotificationsBootstrapped;
     hasPagedHistory: boolean;
     private statusDescription;
@@ -110,6 +114,10 @@ export declare class NgChat implements OnInit, IChatController {
     private getChatWindowComponentInstance;
     private scrollChatWindow;
     onWindowMessagesSeen(messagesSeen: Message[]): void;
+    onWindowChatToggle(payload: {
+        currentWindow: Window;
+        isCollapsed: boolean;
+    }): Promise<void>;
     onWindowChatClosed(payload: {
         closedWindow: Window;
         closedViaEscapeKey: boolean;

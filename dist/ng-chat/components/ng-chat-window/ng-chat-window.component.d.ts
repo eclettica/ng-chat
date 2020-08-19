@@ -26,6 +26,10 @@ export declare class NgChatWindowComponent {
         closedWindow: Window;
         closedViaEscapeKey: boolean;
     }>;
+    onChatWindowToggle: EventEmitter<{
+        currentWindow: Window;
+        isCollapsed: boolean;
+    }>;
     onMessagesSeen: EventEmitter<Message[]>;
     onMessageSent: EventEmitter<Message>;
     onTabTriggered: EventEmitter<{

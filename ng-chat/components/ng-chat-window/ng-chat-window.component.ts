@@ -63,6 +63,9 @@ export class NgChatWindowComponent {
     public onChatWindowClosed: EventEmitter<{ closedWindow: Window, closedViaEscapeKey: boolean}> = new EventEmitter();
 
     @Output()
+    public onChatWindowToggle: EventEmitter<{ currentWindow: Window, isCollapsed: boolean}> = new EventEmitter();
+
+    @Output()
     public onMessagesSeen: EventEmitter<Message[]> = new EventEmitter();
 
     @Output()
@@ -285,6 +288,7 @@ export class NgChatWindowComponent {
     onChatWindowClicked(window: Window): void
     {
         window.isCollapsed = !window.isCollapsed;
+        this.onChatWindowToggle.emit({ currentWindow: window, isCollapsed: window.isCollapsed });
         this.scrollChatWindow(window, ScrollDirection.Bottom);
     }
 

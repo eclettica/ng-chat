@@ -170,6 +170,9 @@ export class NgChat implements OnInit, IChatController {
     @Output()
     public onMessagesSeen: EventEmitter<Message[]> = new EventEmitter<Message[]>();
 
+    @Output()
+    public onParticipantToggle: EventEmitter<{participant: IChatParticipant, isCollapsed: boolean}> = new EventEmitter<{participant: IChatParticipant, isCollapsed: boolean}>();
+
     private browserNotificationsBootstrapped: boolean = false;
 
     public hasPagedHistory: boolean = false;
@@ -728,6 +731,11 @@ export class NgChat implements OnInit, IChatController {
 
     onWindowMessagesSeen(messagesSeen: Message[]): void {
         this.markMessagesAsRead(messagesSeen);
+    }
+
+    async onWindowChatToggle(payload: { currentWindow: Window, isCollapsed: boolean }) {
+        this.onParticipantToggle.emit({participant: payload.currentWindow.participant, isCollapsed: payload.isCollapsed});
+        
     }
 
     async onWindowChatClosed(payload: { closedWindow: Window, closedViaEscapeKey: boolean }) {
