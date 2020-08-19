@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common'), require('@angular/core'), require('@angular/forms'), require('@angular/common/http'), require('rxjs/operators'), require('@angular/platform-browser'), require('rxjs')) :
-    typeof define === 'function' && define.amd ? define('ng-chat', ['exports', '@angular/common', '@angular/core', '@angular/forms', '@angular/common/http', 'rxjs/operators', '@angular/platform-browser', 'rxjs'], factory) :
-    (global = global || self, factory(global['ng-chat'] = {}, global.ng.common, global.ng.core, global.ng.forms, global.ng.common.http, global.rxjs.operators, global.ng.platformBrowser, global.rxjs));
-}(this, (function (exports, common, core, forms, http, operators, platformBrowser, rxjs) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common'), require('@angular/core'), require('@angular/forms'), require('@angular/common/http'), require('@angular/material/icon'), require('rxjs/operators'), require('@angular/platform-browser'), require('rxjs')) :
+    typeof define === 'function' && define.amd ? define('ng-chat', ['exports', '@angular/common', '@angular/core', '@angular/forms', '@angular/common/http', '@angular/material/icon', 'rxjs/operators', '@angular/platform-browser', 'rxjs'], factory) :
+    (global = global || self, factory(global['ng-chat'] = {}, global.ng.common, global.ng.core, global.ng.forms, global.ng.common.http, global.ng.material.icon, global.rxjs.operators, global.ng.platformBrowser, global.rxjs));
+}(this, (function (exports, common, core, forms, http, icon, operators, platformBrowser, rxjs) { 'use strict';
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation.
@@ -1283,7 +1283,7 @@
         NgChatWindowOptionsComponent = __decorate([
             core.Component({
                 selector: 'ng-chat-window-options',
-                template: "<div *ngIf=\"options && options.buttons && options.buttons.length > 0\" class=\"ng-chat-options\">\n\t\t<button class=\"ng-chat-options-activator\">\n\t\t\t<span class=\"primary-text\">...</span>\n\t\t</button>\n\t<div class=\"ng-chat-options-content primary-background shadowed\">\n\t\t<a *ngFor=\"let button of options?.buttons; let i = index\" [ngClass]=\"'primary-text'\" (click)=\"onOptionClicked(options, button)\">\n\t\t\t<span *ngIf=\"button.showIcon\" class=\"material-icons\">{{button.icon}}</span>\n\t\t\t<span *ngIf=\"!button.showIcon\" class=\"material-icons\">{{button.title}}</span>\n\t\t</a>\n\t</div>      \n</div>\n",
+                template: "<div *ngIf=\"options && options.buttons && options.buttons.length > 0\" class=\"ng-chat-options\">\n\t\t<button class=\"ng-chat-options-activator\">\n\t\t\t<span class=\"primary-text\">...</span>\n\t\t</button>\n\t<div class=\"ng-chat-options-content primary-background shadowed\">\n\t\t<a *ngFor=\"let button of options?.buttons; let i = index\" [ngClass]=\"'primary-text'\" (click)=\"onOptionClicked(options, button)\">\n\t\t\t<mat-icon *ngIf=\"button.showIcon\" class=\"material-icons\">{{button.icon}}</mat-icon>\n\t\t\t<span *ngIf=\"!button.showIcon\" class=\"material-icons\">{{button.title}}</span>\n\t\t</a>\n\t</div>      \n</div>\n",
                 styles: [".ng-chat-options-activator{background-color:unset;color:#fff;line-height:28px;border:none;position:relative}.ng-chat-options-activator>span{position:relative;top:-5px;left:0}.ng-chat-options{position:relative;display:inline-block}.ng-chat-options:hover .ng-chat-options-content{display:block}.ng-chat-options:hover .ng-chat-options-activator{background-color:#ddd}.ng-chat-options-content{display:none;position:absolute;min-width:160px;z-index:1}.ng-chat-options-content a:hover{background-color:#ddd}.ng-chat-options-content a{padding:6px 16px;text-decoration:none;display:block}@media only screen and (max-width:581px){.ng-chat-options-content{right:0}}"]
             })
         ], NgChatWindowOptionsComponent);
@@ -1726,7 +1726,7 @@
         }
         NgChatModule = __decorate([
             core.NgModule({
-                imports: [common.CommonModule, forms.FormsModule, http.HttpClientModule],
+                imports: [common.CommonModule, forms.FormsModule, http.HttpClientModule, icon.MatIconModule],
                 declarations: [
                     NgChat,
                     EmojifyPipe,

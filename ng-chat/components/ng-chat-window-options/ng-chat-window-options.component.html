@@ -4,7 +4,7 @@
 		</button>
 	<div class="ng-chat-options-content primary-background shadowed">
 		<a *ngFor="let button of options?.buttons; let i = index" [ngClass]="'primary-text'" (click)="onOptionClicked(options, button)">
-			<span *ngIf="button.showIcon" class="material-icons">{{button.icon}}</span>
+			<mat-icon *ngIf="button.showIcon" class="material-icons">{{button.icon}}</mat-icon>
 			<span *ngIf="!button.showIcon" class="material-icons">{{button.title}}</span>
 		</a>
 	</div>      

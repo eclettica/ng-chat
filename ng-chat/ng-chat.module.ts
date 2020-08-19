@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
+
 
 import { NgChat } from './ng-chat.component';
 import { EmojifyPipe } from './pipes/emojify.pipe';
@@ -15,7 +17,7 @@ import { NgChatFriendsListComponent } from './components/ng-chat-friends-list/ng
 import { NgChatWindowComponent } from './components/ng-chat-window/ng-chat-window.component';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, HttpClientModule],
+  imports: [CommonModule, FormsModule, HttpClientModule, MatIconModule],
   declarations: [
     NgChat, 
     EmojifyPipe, 

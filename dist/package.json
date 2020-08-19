@@ -6,6 +6,8 @@
     "@angular/common": "*",
     "@angular/core": "*",
     "@angular/forms": "*",
+    "@angular/material": "*",
+    "@angular/cdk": "*",
     "rxjs": "*"
   },
   "description": "A simple facebook/linkedin lookalike chat module for Angular applications.",
