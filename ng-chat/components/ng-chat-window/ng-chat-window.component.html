@@ -1,5 +1,5 @@
-<ng-container *ngIf="window && window.isCollapsed" [ngClass]="windowClass">
-	<div class="ng-chat-title secondary-background">
+<ng-container *ngIf="window && window.isCollapsed">
+	<div class="ng-chat-title secondary-background {{windowClass}}">
 		<div class="ng-chat-title-visibility-toggle-area" (click)="onChatWindowClicked(window)">
 			<strong title="{{window.participant.displayName}}">
 				{{window.participant.displayName}}
@@ -10,8 +10,8 @@
 		<a href="javascript:void(0);" class="ng-chat-close primary-text" (click)="onCloseChatWindow()">X</a>
 	</div>
 </ng-container>
-<ng-container *ngIf="window && !window.isCollapsed" [ngClass]="windowClass">
-	<div class="ng-chat-title secondary-background">
+<ng-container *ngIf="window && !window.isCollapsed">
+	<div class="ng-chat-title secondary-background {{windowClass}}">
 		<div class="ng-chat-title-visibility-toggle-area" (click)="onChatWindowClicked(window)">
 			<strong title="{{window.participant.displayName}}">
 				{{window.participant.displayName}}
