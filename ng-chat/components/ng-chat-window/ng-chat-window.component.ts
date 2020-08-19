@@ -23,10 +23,10 @@ import { chatParticipantStatusDescriptor } from '../../core/chat-participant-sta
 })
 export class NgChatWindowComponent {
     constructor() {
-        this.windowOptions = this.window.participant.windowOptions;
+        //this.windowOptions = this.window.participant.windowOptions;
      }
 
-     windowOptions: WindowOption | null;
+     //windowOptions: WindowOption | null;
 
 
     @Input()
