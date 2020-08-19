@@ -1068,7 +1068,7 @@ var NgChatWindowOptionsComponent = /** @class */ (function () {
     NgChatWindowOptionsComponent = __decorate([
         Component({
             selector: 'ng-chat-window-options',
-            template: "\n<div *ngIf=\"options && options.buttons && options.buttons.length > 0 && options.buttons.length < 3\" class=\"ng-chat-options-content-reduced\">\n\t<a *ngFor=\"let button of options?.buttons; let i = index\" [ngClass]=\"{'primary-text': true, 'disabled': button.enableButton() == false}\" (click)=\"onOptionClicked(options, button)\">\n\t\t<mat-icon *ngIf=\"button.showIcon\" class=\"material-icons\">{{button.icon}}</mat-icon>\n\t\t<span *ngIf=\"!button.showIcon\" class=\"material-icons\">{{button.title}}</span>\n\t</a>\n</div>      \n<div *ngIf=\"options && options.buttons && options.buttons.length > 2\" class=\"ng-chat-options\">\n\t\t<button class=\"ng-chat-options-activator\">\n\t\t\t<span class=\"primary-text\">...</span>\n\t\t</button>\n\t<div class=\"ng-chat-options-content primary-background shadowed\">\n\t\t<a *ngFor=\"let button of options?.buttons; let i = index\" [ngClass]=\"{'primary-text': true, 'disabled': button.enableButton() == false}\" (click)=\"onOptionClicked(options, button)\">\n\t\t\t<mat-icon *ngIf=\"button.showIcon\" class=\"material-icons\">{{button.icon}}</mat-icon>\n\t\t\t<span *ngIf=\"!button.showIcon\" class=\"material-icons\">{{button.title}}</span>\n\t\t</a>\n\t</div>      \n</div>\n",
+            template: "\n<div *ngIf=\"options && options.buttons && options.buttons.length > 0 && options.buttons.length < 3\" class=\"ng-chat-options-content-reduced\">\n\t<a *ngFor=\"let button of options?.buttons; let i = index\" [ngClass]=\"{'primary-text': true, 'disabled': button.enableButton(options.chattingTo.participant) == false}\" (click)=\"onOptionClicked(options, button)\">\n\t\t<mat-icon *ngIf=\"button.showIcon\" class=\"material-icons\">{{button.icon}}</mat-icon>\n\t\t<span *ngIf=\"!button.showIcon\" class=\"material-icons\">{{button.title}}</span>\n\t</a>\n</div>      \n<div *ngIf=\"options && options.buttons && options.buttons.length > 2\" class=\"ng-chat-options\">\n\t\t<button class=\"ng-chat-options-activator\">\n\t\t\t<span class=\"primary-text\">...</span>\n\t\t</button>\n\t<div class=\"ng-chat-options-content primary-background shadowed\">\n\t\t<a *ngFor=\"let button of options?.buttons; let i = index\" [ngClass]=\"{'primary-text': true, 'disabled': button.enableButton(options.chattingTo.participant) == false}\" (click)=\"onOptionClicked(options, button)\">\n\t\t\t<mat-icon *ngIf=\"button.showIcon\" class=\"material-icons\">{{button.icon}}</mat-icon>\n\t\t\t<span *ngIf=\"!button.showIcon\" class=\"material-icons\">{{button.title}}</span>\n\t\t</a>\n\t</div>      \n</div>\n",
             styles: [".ng-chat-options-activator{background-color:unset;color:#fff;line-height:28px;border:none;position:relative}.ng-chat-options-activator>span{position:relative;top:-5px;left:0}.ng-chat-options{position:relative;display:inline-block}.ng-chat-options:hover .ng-chat-options-content{display:block}.ng-chat-options:hover .ng-chat-options-activator{background-color:#ddd}.ng-chat-options-content{display:none;position:absolute;min-width:160px;z-index:1}.ng-chat-options-content-reduced{display:inline-block;position:relative;bottom:5px}.ng-chat-options-content a:hover{background-color:#ddd}.ng-chat-options-content a{padding:6px 16px;text-decoration:none;display:block}.ng-chat-options-content a.disabled mat-icon,.ng-chat-options-content-reduced a.disabled mat-icon{color:#bababa}@media only screen and (max-width:581px){.ng-chat-options-content{right:0}}"]
         })
     ], NgChatWindowOptionsComponent);
@@ -1260,8 +1260,11 @@ var NgChatWindowComponent = /** @class */ (function () {
     }
     //windowOptions: WindowOption | null;
     NgChatWindowComponent.prototype.ngOnInit = function () {
-        var _a, _b, _c;
-        this.windowClass = (_c = (_b = (_a = this.window) === null || _a === void 0 ? void 0 : _a.participant) === null || _b === void 0 ? void 0 : _b.windowOptions) === null || _c === void 0 ? void 0 : _c.windowClass;
+        if (this.window
+            && this.window.participant
+            && this.window.participant.windowOptions
+            && this.window.participant.windowOptions.windowClass)
+            this.windowClass = this.window.participant.windowOptions.windowClass;
         if (this.windowClass == undefined || this.windowClass == null)
             this.windowClass = '';
     };

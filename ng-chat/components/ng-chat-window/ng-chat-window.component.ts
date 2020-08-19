@@ -30,7 +30,12 @@ export class NgChatWindowComponent implements OnInit {
      //windowOptions: WindowOption | null;
 
      ngOnInit() {
-         this.windowClass =  this.window?.participant?.windowOptions?.windowClass;
+        if(this.window 
+            && this.window.participant
+            && this.window.participant.windowOptions
+            && this.window.participant.windowOptions.windowClass)
+         this.windowClass =  this.window.participant.windowOptions.windowClass;
+         
          if(this.windowClass == undefined || this.windowClass == null)
             this.windowClass ='';
      }
