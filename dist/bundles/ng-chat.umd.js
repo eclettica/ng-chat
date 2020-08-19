@@ -1255,9 +1255,10 @@
     }());
 
     var NgChatWindowOptionsComponent = /** @class */ (function () {
+        //buttons: WindowButton[] | undefined;
         function NgChatWindowOptionsComponent() {
             this.activeOptionTrackerChange = new core.EventEmitter();
-            this.buttons = this.options.buttons;
+            //this.buttons = this.options.buttons;
         }
         NgChatWindowOptionsComponent.prototype.onOptionClicked = function (option, button) {
             if (button.action) {
@@ -1282,7 +1283,7 @@
         NgChatWindowOptionsComponent = __decorate([
             core.Component({
                 selector: 'ng-chat-window-options',
-                template: "<div *ngIf=\"options && buttons && buttons.length > 0\" class=\"ng-chat-options\">\n\t\t<button class=\"ng-chat-options-activator\">\n\t\t\t<span class=\"primary-text\">...</span>\n\t\t</button>\n\t<div class=\"ng-chat-options-content primary-background shadowed\">\n\t\t<a *ngFor=\"let button of buttons; let i = index\" [ngClass]=\"'primary-text'\" (click)=\"onOptionClicked(options, button)\">\n\t\t\t<span *ngIf=\"button.showIcon\" class=\"material-icons\">{{button.icon}}</span>\n\t\t\t<span *ngIf=\"!button.showIcon\" class=\"material-icons\">{{button.title}}</span>\n\t\t</a>\n\t</div>      \n</div>\n",
+                template: "<div *ngIf=\"options && options.buttons && options.buttons.length > 0\" class=\"ng-chat-options\">\n\t\t<button class=\"ng-chat-options-activator\">\n\t\t\t<span class=\"primary-text\">...</span>\n\t\t</button>\n\t<div class=\"ng-chat-options-content primary-background shadowed\">\n\t\t<a *ngFor=\"let button of options?.buttons; let i = index\" [ngClass]=\"'primary-text'\" (click)=\"onOptionClicked(options, button)\">\n\t\t\t<span *ngIf=\"button.showIcon\" class=\"material-icons\">{{button.icon}}</span>\n\t\t\t<span *ngIf=\"!button.showIcon\" class=\"material-icons\">{{button.title}}</span>\n\t\t</a>\n\t</div>      \n</div>\n",
                 styles: [".ng-chat-options-activator{background-color:unset;color:#fff;line-height:28px;border:none;position:relative}.ng-chat-options-activator>span{position:relative;top:-5px;left:0}.ng-chat-options{position:relative;display:inline-block}.ng-chat-options:hover .ng-chat-options-content{display:block}.ng-chat-options:hover .ng-chat-options-activator{background-color:#ddd}.ng-chat-options-content{display:none;position:absolute;min-width:160px;z-index:1}.ng-chat-options-content a:hover{background-color:#ddd}.ng-chat-options-content a{padding:6px 16px;text-decoration:none;display:block}@media only screen and (max-width:581px){.ng-chat-options-content{right:0}}"]
             })
         ], NgChatWindowOptionsComponent);

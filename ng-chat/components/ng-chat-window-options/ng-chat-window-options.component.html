@@ -1,9 +1,9 @@
-<div *ngIf="options && buttons && buttons.length > 0" class="ng-chat-options">
+<div *ngIf="options && options.buttons && options.buttons.length > 0" class="ng-chat-options">
 		<button class="ng-chat-options-activator">
 			<span class="primary-text">...</span>
 		</button>
 	<div class="ng-chat-options-content primary-background shadowed">
-		<a *ngFor="let button of buttons; let i = index" [ngClass]="'primary-text'" (click)="onOptionClicked(options, button)">
+		<a *ngFor="let button of options?.buttons; let i = index" [ngClass]="'primary-text'" (click)="onOptionClicked(options, button)">
 			<span *ngIf="button.showIcon" class="material-icons">{{button.icon}}</span>
 			<span *ngIf="!button.showIcon" class="material-icons">{{button.title}}</span>
 		</a>

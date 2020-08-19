@@ -9,10 +9,10 @@ import { WindowButton } from '../../core/window-button';
     styleUrls: ['./ng-chat-window-options.component.css']
 })
 export class NgChatWindowOptionsComponent {
-	buttons: WindowButton[] | undefined;
+	//buttons: WindowButton[] | undefined;
 
 	constructor() { 
-		this.buttons = this.options.buttons;
+		//this.buttons = this.options.buttons;
 	}
 
 	// {
