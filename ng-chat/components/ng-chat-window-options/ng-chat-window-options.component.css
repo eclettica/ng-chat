@@ -28,6 +28,11 @@
     min-width: 160px;
     z-index: 1;
 }
+.ng-chat-options-content-reduced {
+    display: inline-block;
+    position: relative;
+    bottom: 5px;
+}
 .ng-chat-options-content a:hover {
     background-color: #ddd;
 }

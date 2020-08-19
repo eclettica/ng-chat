@@ -1,4 +1,11 @@
-<div *ngIf="options && options.buttons && options.buttons.length > 0" class="ng-chat-options">
+
+<div *ngIf="options && options.buttons && options.buttons.length > 0 && options.buttons.length < 3" class="ng-chat-options-content-reduced">
+	<a *ngFor="let button of options?.buttons; let i = index" [ngClass]="'primary-text'" (click)="onOptionClicked(options, button)">
+		<mat-icon *ngIf="button.showIcon" class="material-icons">{{button.icon}}</mat-icon>
+		<span *ngIf="!button.showIcon" class="material-icons">{{button.title}}</span>
+	</a>
+</div>      
+<div *ngIf="options && options.buttons && options.buttons.length > 2" class="ng-chat-options">
 		<button class="ng-chat-options-activator">
 			<span class="primary-text">...</span>
 		</button>
