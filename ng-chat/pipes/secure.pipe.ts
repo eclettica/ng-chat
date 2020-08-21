@@ -1,6 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { DomSanitizer } from '@angular/platform-browser';
 
 /*
  * Sanitizes an URL resource
@@ -8,7 +9,9 @@ import { Observable } from 'rxjs';
 @Pipe({name: 'secure'})
 export class SecurePipe implements PipeTransform {
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient,
+      private sanitizer: DomSanitizer,
+      ) { }
   
     transform(url: string) {
   
@@ -22,9 +25,13 @@ export class SecurePipe implements PipeTransform {
         this.http.get(url, {responseType: 'blob'}).subscribe(response => {
           const reader = new FileReader();
           reader.readAsDataURL(response);
-          reader.onloadend = function() {
-              if(reader.result != null)
-                observer.next(reader.result);
+          reader.onloadend = () => {
+              if(reader.result != null) {
+                let res: any = reader.result;
+                res = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(res))
+                observer.next(res);
+              }
+                
           };
         });
   
