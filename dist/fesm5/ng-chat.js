@@ -975,7 +975,7 @@ var SecurePipe = /** @class */ (function () {
                 reader.onloadend = function () {
                     if (reader.result != null) {
                         var res = reader.result;
-                        res = _this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(res));
+                        res = _this.sanitizer.bypassSecurityTrustUrl(res);
                         observer.next(res);
                     }
                 };

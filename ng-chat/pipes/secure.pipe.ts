@@ -28,7 +28,7 @@ export class SecurePipe implements PipeTransform {
           reader.onloadend = () => {
               if(reader.result != null) {
                 let res: any = reader.result;
-                res = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(res))
+                res = this.sanitizer.bypassSecurityTrustUrl(res)
                 observer.next(res);
               }
                 

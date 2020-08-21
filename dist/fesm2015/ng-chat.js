@@ -902,7 +902,7 @@ let SecurePipe = class SecurePipe {
                 reader.onloadend = () => {
                     if (reader.result != null) {
                         let res = reader.result;
-                        res = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(res));
+                        res = this.sanitizer.bypassSecurityTrustUrl(res);
                         observer.next(res);
                     }
                 };
