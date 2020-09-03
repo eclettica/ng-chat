@@ -33,6 +33,8 @@ export class SecurePipe implements PipeTransform {
               }
                 
           };
+        }, error => {
+          observer.next('data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
         });
   
         return {unsubscribe() {  }};
