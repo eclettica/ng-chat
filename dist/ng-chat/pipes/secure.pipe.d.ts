@@ -5,6 +5,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export declare class SecurePipe implements PipeTransform {
     private http;
     private sanitizer;
+    defaultImage: string | ArrayBuffer | undefined;
     constructor(http: HttpClient, sanitizer: DomSanitizer);
     transform(url: string): Observable<string | ArrayBuffer>;
 }
