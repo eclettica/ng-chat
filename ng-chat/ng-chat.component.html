@@ -17,7 +17,7 @@
         (onOptionPromptConfirmed)="onOptionPromptConfirmed($event)"
     >
     </ng-chat-friends-list>
-
+    <!-- check -->
     <div *ngFor="let window of windows; let i = index" [ngClass]="{'ng-chat-window': true, 'primary-outline-color': true, 'ng-chat-window-collapsed': window.isCollapsed}" [ngStyle]="{'right': (!hideFriendsList ? friendsListWidth : 0) + 20 + windowSizeFactor * i + 'px'}">
         <ng-chat-window
             #chatWindow
