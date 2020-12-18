@@ -70,6 +70,9 @@ export class NgChatWindowComponent implements OnInit {
     @Input()
     public hasPagedHistory: boolean = true;
 
+    @Input()
+    public showCloseButton: boolean = true;
+
     @Output()
     public onChatWindowClosed: EventEmitter<{ closedWindow: Window, closedViaEscapeKey: boolean}> = new EventEmitter();
 

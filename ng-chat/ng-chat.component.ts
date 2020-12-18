@@ -156,6 +156,9 @@ export class NgChat implements OnInit, IChatController {
     @Input()
     public isViewportOnMobileEnabled: boolean = false;
 
+    @Input()
+    public showCloseButton: boolean = true;
+
     public beforeParteciantChatClosed: (arg0: IChatParticipant) => boolean;
      
     @Output()
