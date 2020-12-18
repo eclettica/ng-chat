@@ -24,6 +24,7 @@ export declare class NgChatWindowComponent implements OnInit {
     showMessageDate: boolean;
     messageDatePipeFormat: string;
     hasPagedHistory: boolean;
+    showCloseButton: boolean;
     onChatWindowClosed: EventEmitter<{
         closedWindow: Window;
         closedViaEscapeKey: boolean;

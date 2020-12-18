@@ -55,7 +55,7 @@ export declare class NgChat implements OnInit, IChatController {
     messageDatePipeFormat: string;
     showMessageDate: boolean;
     isViewportOnMobileEnabled: boolean;
-    closeButtonWorkAsToggle: boolean;
+    showCloseButton: boolean;
     beforeParteciantChatClosed: (arg0: IChatParticipant) => boolean;
     onParticipantClicked: EventEmitter<IChatParticipant>;
     onParticipantChatOpened: EventEmitter<IChatParticipant>;

@@ -22,23 +22,23 @@ import { chatParticipantStatusDescriptor } from '../../core/chat-participant-sta
     encapsulation: ViewEncapsulation.None
 })
 export class NgChatWindowComponent implements OnInit {
-    windowClass: string|undefined = '';
+    windowClass: string | undefined = '';
     constructor() {
         //this.windowOptions = this.window.participant.windowOptions;
-     }
+    }
 
-     //windowOptions: WindowOption | null;
+    //windowOptions: WindowOption | null;
 
-     ngOnInit() {
-        if(this.window 
+    ngOnInit() {
+        if (this.window
             && this.window.participant
             && this.window.participant.windowOptions
             && this.window.participant.windowOptions.windowClass)
-         this.windowClass =  this.window.participant.windowOptions.windowClass;
-         
-         if(this.windowClass == undefined || this.windowClass == null)
-            this.windowClass ='';
-     }
+            this.windowClass = this.window.participant.windowOptions.windowClass;
+
+        if (this.windowClass == undefined || this.windowClass == null)
+            this.windowClass = '';
+    }
 
     @Input()
     public fileUploadAdapter: IFileUploadAdapter;
@@ -55,10 +55,10 @@ export class NgChatWindowComponent implements OnInit {
     @Input()
     public showOptions: boolean;
 
-    @Input()    
+    @Input()
     public emojisEnabled: boolean = true;
 
-    @Input()    
+    @Input()
     public linkfyEnabled: boolean = true;
 
     @Input()
@@ -70,11 +70,14 @@ export class NgChatWindowComponent implements OnInit {
     @Input()
     public hasPagedHistory: boolean = true;
 
-    @Output()
-    public onChatWindowClosed: EventEmitter<{ closedWindow: Window, closedViaEscapeKey: boolean}> = new EventEmitter();
+    @Input()
+    public showCloseButton: boolean = true;
 
     @Output()
-    public onChatWindowToggle: EventEmitter<{ currentWindow: Window, isCollapsed: boolean}> = new EventEmitter();
+    public onChatWindowClosed: EventEmitter<{ closedWindow: Window, closedViaEscapeKey: boolean }> = new EventEmitter();
+
+    @Output()
+    public onChatWindowToggle: EventEmitter<{ currentWindow: Window, isCollapsed: boolean }> = new EventEmitter();
 
     @Output()
     public onMessagesSeen: EventEmitter<Message[]> = new EventEmitter();
@@ -104,10 +107,8 @@ export class NgChatWindowComponent implements OnInit {
     public MessageType = MessageType;
     public chatParticipantStatusDescriptor = chatParticipantStatusDescriptor;
 
-    defaultWindowOptions(currentWindow: Window): IChatOption[]
-    {
-        if (this.showOptions && currentWindow.participant.participantType == ChatParticipantType.User)
-        {
+    defaultWindowOptions(currentWindow: Window): IChatOption[] {
+        if (this.showOptions && currentWindow.participant.participantType == ChatParticipantType.User) {
             return [{
                 isActive: false,
                 chattingTo: currentWindow,
@@ -122,15 +123,14 @@ export class NgChatWindowComponent implements OnInit {
     }
 
     // Asserts if a user avatar is visible in a chat cluster
-    isAvatarVisible(window: Window, message: Message, index: number): boolean
-    {
-        if (message.fromId != this.userId){
-            if (index == 0){
+    isAvatarVisible(window: Window, message: Message, index: number): boolean {
+        if (message.fromId != this.userId) {
+            if (index == 0) {
                 return true; // First message, good to show the thumbnail
             }
-            else{
+            else {
                 // Check if the previous message belongs to the same user, if it belongs there is no need to show the avatar again to form the message cluster
-                if (window.messages[index - 1].fromId != message.fromId){
+                if (window.messages[index - 1].fromId != message.fromId) {
                     return true;
                 }
             }
@@ -139,14 +139,11 @@ export class NgChatWindowComponent implements OnInit {
         return false;
     }
 
-    getChatWindowAvatar(participant: IChatParticipant, message: Message): string | null
-    {
-        if (participant.participantType == ChatParticipantType.User)
-        {
+    getChatWindowAvatar(participant: IChatParticipant, message: Message): string | null {
+        if (participant.participantType == ChatParticipantType.User) {
             return participant.avatar;
         }
-        else if (participant.participantType == ChatParticipantType.Group)
-        {
+        else if (participant.participantType == ChatParticipantType.Group) {
             let group = participant as Group;
             let userIndex = group.chattingTo.findIndex(x => x.id == message.fromId);
 
@@ -156,10 +153,8 @@ export class NgChatWindowComponent implements OnInit {
         return null;
     }
 
-    getChatWindowAvatarSrc(participant: IChatParticipant, message: Message): string | null
-    {
-        if (participant.participantType == ChatParticipantType.User)
-        {
+    getChatWindowAvatarSrc(participant: IChatParticipant, message: Message): string | null {
+        if (participant.participantType == ChatParticipantType.User) {
             return participant.avatarSrc;
         }
         // else if (participant.participantType == ChatParticipantType.Group)
@@ -173,40 +168,35 @@ export class NgChatWindowComponent implements OnInit {
         return null;
     }
 
-    isUploadingFile(window: Window): boolean
-    {
+    isUploadingFile(window: Window): boolean {
         const fileUploadInstanceId = this.getUniqueFileUploadInstanceId(window);
 
         return this.fileUploadersInUse.indexOf(fileUploadInstanceId) > -1;
     }
 
     // Generates a unique file uploader id for each participant
-    getUniqueFileUploadInstanceId(window: Window): string
-    {
-        if (window && window.participant)
-        {
+    getUniqueFileUploadInstanceId(window: Window): string {
+        if (window && window.participant) {
             return `ng-chat-file-upload-${window.participant.id}`;
         }
-        
+
         return 'ng-chat-file-upload';
     }
 
-    unreadMessagesTotal(window: Window): string
-    {           
+    unreadMessagesTotal(window: Window): string {
         return MessageCounter.unreadMessagesTotal(window, this.userId);
     }
 
     // Scrolls a chat window message flow to the bottom
-    scrollChatWindow(window: Window, direction: ScrollDirection): void
-    {
-        if (!window.isCollapsed){
+    scrollChatWindow(window: Window, direction: ScrollDirection): void {
+        if (!window.isCollapsed) {
             setTimeout(() => {
-                if (this.chatMessages){
+                if (this.chatMessages) {
                     let element = this.chatMessages.nativeElement;
-                    let position = ( direction === ScrollDirection.Top ) ? 0 : element.scrollHeight;
+                    let position = (direction === ScrollDirection.Top) ? 0 : element.scrollHeight;
                     element.scrollTop = position;
                 }
-            }); 
+            });
         }
     }
 
@@ -215,32 +205,27 @@ export class NgChatWindowComponent implements OnInit {
     }
 
     // Triggers native file upload for file selection from the user
-    triggerNativeFileUpload(window: Window): void
-    {
-        if (window)
-        {
+    triggerNativeFileUpload(window: Window): void {
+        if (window) {
             if (this.nativeFileInput) this.nativeFileInput.nativeElement.click();
         }
     }
 
     // Toggles a window focus on the focus/blur of a 'newMessage' input
-    toggleWindowFocus(window: Window): void
-    {
+    toggleWindowFocus(window: Window): void {
         window.hasFocus = !window.hasFocus;
-        if(window.hasFocus) {
+        if (window.hasFocus) {
             const unreadMessages = window.messages
-                .filter(message => message.dateSeen == null 
+                .filter(message => message.dateSeen == null
                     && (message.toId == this.userId || window.participant.participantType === ChatParticipantType.Group));
-            
-            if (unreadMessages && unreadMessages.length > 0)
-            {
+
+            if (unreadMessages && unreadMessages.length > 0) {
                 this.onMessagesSeen.emit(unreadMessages);
             }
         }
     }
 
-    markMessagesAsRead(messages: Message[]): void 
-    {
+    markMessagesAsRead(messages: Message[]): void {
         this.onMessagesSeen.emit(messages);
     }
 
@@ -249,8 +234,7 @@ export class NgChatWindowComponent implements OnInit {
     }
 
     // Closes a chat window via the close 'X' button
-    onCloseChatWindow(): void 
-    {
+    onCloseChatWindow(): void {
         this.onChatWindowClosed.emit({ closedWindow: this.window, closedViaEscapeKey: false });
     }
 
@@ -259,52 +243,47 @@ export class NgChatWindowComponent implements OnInit {
         - Tabs between windows on TAB or SHIFT + TAB
         - Closes the current focused window on ESC
     */
-   onChatInputTyped(event: any, window: Window): void
-   {
-       switch (event.keyCode)
-       {
-           case 13:
-               if (window.newMessage && window.newMessage.trim() != "")
-               {
-                   let message = new Message();
-            
-                   message.fromId = this.userId;
-                   message.toId = window.participant.id;
-                   message.message = window.newMessage;
-                   message.dateSent = new Date();
-       
-                   window.messages.push(message);
-       
-                   this.onMessageSent.emit(message);
-       
-                   window.newMessage = ""; // Resets the new message input
-       
-                   this.scrollChatWindow(window, ScrollDirection.Bottom);
-               }
-               break;
-           case 9:
-               event.preventDefault();
+    onChatInputTyped(event: any, window: Window): void {
+        switch (event.keyCode) {
+            case 13:
+                if (window.newMessage && window.newMessage.trim() != "") {
+                    let message = new Message();
 
-               this.onTabTriggered.emit({ triggeringWindow: window, shiftKeyPressed: event.shiftKey });
+                    message.fromId = this.userId;
+                    message.toId = window.participant.id;
+                    message.message = window.newMessage;
+                    message.dateSent = new Date();
 
-               break;
-           case 27:
-               this.onChatWindowClosed.emit({ closedWindow: window, closedViaEscapeKey: true });
+                    window.messages.push(message);
 
-               break;
-       }
-   }
+                    this.onMessageSent.emit(message);
+
+                    window.newMessage = ""; // Resets the new message input
+
+                    this.scrollChatWindow(window, ScrollDirection.Bottom);
+                }
+                break;
+            case 9:
+                event.preventDefault();
+
+                this.onTabTriggered.emit({ triggeringWindow: window, shiftKeyPressed: event.shiftKey });
+
+                break;
+            case 27:
+                this.onChatWindowClosed.emit({ closedWindow: window, closedViaEscapeKey: true });
+
+                break;
+        }
+    }
 
     // Toggles a chat window visibility between maximized/minimized
-    onChatWindowClicked(window: Window): void
-    {
+    onChatWindowClicked(window: Window): void {
         window.isCollapsed = !window.isCollapsed;
         this.onChatWindowToggle.emit({ currentWindow: window, isCollapsed: window.isCollapsed });
         this.scrollChatWindow(window, ScrollDirection.Bottom);
     }
 
-    private clearInUseFileUploader(fileUploadInstanceId: string): void
-    {
+    private clearInUseFileUploader(fileUploadInstanceId: string): void {
         const uploaderInstanceIdIndex = this.fileUploadersInUse.indexOf(fileUploadInstanceId);
 
         if (uploaderInstanceIdIndex > -1) {
@@ -317,8 +296,7 @@ export class NgChatWindowComponent implements OnInit {
         const fileUploadInstanceId = this.getUniqueFileUploadInstanceId(window);
         const uploadElementRef = this.nativeFileInput;
 
-        if (uploadElementRef)
-        {
+        if (uploadElementRef) {
             const file: File = uploadElementRef.nativeElement.files[0];
 
             this.fileUploadersInUse.push(fileUploadInstanceId);
@@ -331,9 +309,9 @@ export class NgChatWindowComponent implements OnInit {
 
                     // Push file message to current user window   
                     window.messages.push(fileMessage);
-        
+
                     this.onMessageSent.emit(fileMessage);
-        
+
                     this.scrollChatWindow(window, ScrollDirection.Bottom);
 
                     // Resets the file upload element

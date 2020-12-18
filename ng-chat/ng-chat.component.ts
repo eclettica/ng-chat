@@ -155,7 +155,7 @@ export class NgChat implements OnInit, IChatController {
     public isViewportOnMobileEnabled: boolean = false;
 
     @Input()
-    public closeButtonWorkAsToggle: boolean = false;
+    public showCloseButton: boolean = true;
 
     public beforeParteciantChatClosed: (arg0: IChatParticipant) => boolean;
 
@@ -681,30 +681,25 @@ export class NgChat implements OnInit, IChatController {
     }
 
     async onWindowChatClosed(payload: { closedWindow: Window, closedViaEscapeKey: boolean }) {
-        if (this.closeButtonWorkAsToggle) {
-            const togglePayload = { currentWindow: payload.closedWindow, isCollapsed: this.isCollapsed };
-            this.onWindowChatToggle(togglePayload);
-        } else {
-            const { closedWindow, closedViaEscapeKey } = payload;
-            console.log('onWindowChatClosed');
-            if (this.beforeParteciantChatClosed != undefined && this.beforeParteciantChatClosed) {
-                const l = await this.beforeParteciantChatClosed(closedWindow.participant);
-                if (l == false)
-                    return;
-            }
-            if (closedViaEscapeKey) {
-                let closestWindow = this.getClosestWindow(closedWindow);
+        const { closedWindow, closedViaEscapeKey } = payload;
+        console.log('onWindowChatClosed');
+        if (this.beforeParteciantChatClosed != undefined && this.beforeParteciantChatClosed) {
+            const l = await this.beforeParteciantChatClosed(closedWindow.participant);
+            if (l == false)
+                return;
+        }
+        if (closedViaEscapeKey) {
+            let closestWindow = this.getClosestWindow(closedWindow);
 
-                if (closestWindow) {
-                    this.focusOnWindow(closestWindow, () => { this.closeWindow(closedWindow); });
-                }
-                else {
-                    this.closeWindow(closedWindow);
-                }
+            if (closestWindow) {
+                this.focusOnWindow(closestWindow, () => { this.closeWindow(closedWindow); });
             }
             else {
                 this.closeWindow(closedWindow);
             }
+        }
+        else {
+            this.closeWindow(closedWindow);
         }
     }
 
