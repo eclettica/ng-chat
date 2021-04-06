@@ -8,4 +8,8 @@ export class Message
     public message: string;
     public dateSent?: Date;
     public dateSeen?: Date;
+    public repositoryId?: string;
+    public repositorySrcUri?: string;
+    public groupId?: string;
+    public randomId?: string;
 }
