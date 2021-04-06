@@ -62,9 +62,14 @@
 						<span *ngIf="message.fileSizeInBytes"  class="file-message-size">{{message.fileSizeInBytes}} Bytes</span>
           </a>
           <div *ngIf="message.repositoryId">
-            <button (click)="downloadFile(message.repositoryId, message.attachmentName ? message.attachmentName : message.message)">SCARICA</button>
+            <button (click)="downloadFile(message)" mat-flat-button class="download-button">SCARICA</button>
             <span class="file-message-title" [attr.title]="message.message">{{message.message}}</span>
+            <button (click)="goToRepo(window, message)" mat-flat-button class="download-button">REPO</button>
+          <div>
+            <span *ngIf="showMessageDate && message.dateSent" class="message-sent-date">{{message.dateSent | date:messageDatePipeFormat}}</span>
           </div>
+        </div>
+
 				</div>
 			</ng-container>
 		</div>

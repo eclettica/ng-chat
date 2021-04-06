@@ -822,4 +822,8 @@ export class NgChat implements OnInit, IChatController {
     onDownloadFile(params: {repositoryId: string, fileName: string}) {
       this.adapter.downloadFile(params.repositoryId, params.fileName);
     }
+
+    onGoToRepo(params: {repositoryId: string, isGroup: boolean}) {
+      this.adapter.goToRepo(params.repositoryId, params.isGroup);
+    }
 }

@@ -136,4 +136,8 @@ export declare class NgChat implements OnInit, IChatController {
         repositoryId: string;
         fileName: string;
     }): void;
+    onGoToRepo(params: {
+        repositoryId: string;
+        isGroup: boolean;
+    }): void;
 }

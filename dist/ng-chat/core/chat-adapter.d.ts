@@ -7,6 +7,7 @@ export declare abstract class ChatAdapter {
     abstract getMessageHistory(destinataryId: any): Observable<Message[]>;
     abstract sendMessage(message: Message): void;
     abstract downloadFile(repositoryId: string, fileName: string): void;
+    abstract goToRepo(repositoryId: string, isGroup: boolean): void;
     onFriendsListChanged(participantsResponse: ParticipantResponse[]): void;
     onMessageReceived(participant: IChatParticipant, message: Message): void;
     /** @internal */

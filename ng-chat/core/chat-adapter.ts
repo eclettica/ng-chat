@@ -16,6 +16,8 @@ export abstract class ChatAdapter
 
     public abstract downloadFile(repositoryId: string, fileName: string): void;
 
+    public abstract goToRepo(repositoryId: string, isGroup: boolean): void;
+
     // ### Adapter/Chat income/ingress events ###
 
     public onFriendsListChanged(participantsResponse: ParticipantResponse[]): void

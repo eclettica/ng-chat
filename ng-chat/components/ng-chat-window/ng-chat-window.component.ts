@@ -94,6 +94,10 @@ export class NgChatWindowComponent implements OnInit {
     @Output()
     public onDownloadFile: EventEmitter<{repositoryId: string, fileName: string}> = new EventEmitter();
 
+    @Output()
+    public onGoToRepo: EventEmitter<{repositoryId: string, isGroup: boolean}> = new EventEmitter();
+
+
     @ViewChild('chatMessages') chatMessages: any;
     @ViewChild('nativeFileInput') nativeFileInput: ElementRef;
     @ViewChild('chatWindowInput') chatWindowInput: any;
@@ -352,7 +356,23 @@ export class NgChatWindowComponent implements OnInit {
         }
     }
 
-    downloadFile(repositoryId: string, fileName: string) {
-      this.onDownloadFile.emit({repositoryId, fileName});
+    downloadFile(message: Message) {
+      this.markMessagesAsRead([message]);
+      if(message.repositoryId) {
+        const fileName = message.attachmentName ? message.attachmentName : message.message;
+        this.onDownloadFile.emit({
+          repositoryId: message.repositoryId,
+          fileName: fileName});
+        }
+    }
+
+    goToRepo(window: Window, message: Message) {
+      if(message.repositoryId) {
+        const fileName = message.attachmentName ? message.attachmentName : message.message;
+        this.onGoToRepo.emit({
+          repositoryId: message.repositoryId,
+          isGroup: message.groupId ? true : false
+        });
+        }
     }
 }

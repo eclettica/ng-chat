@@ -44,6 +44,10 @@ export declare class NgChatWindowComponent implements OnInit {
         repositoryId: string;
         fileName: string;
     }>;
+    onGoToRepo: EventEmitter<{
+        repositoryId: string;
+        isGroup: boolean;
+    }>;
     chatMessages: any;
     nativeFileInput: ElementRef;
     chatWindowInput: any;
@@ -70,5 +74,6 @@ export declare class NgChatWindowComponent implements OnInit {
     onChatWindowClicked(window: Window): void;
     private clearInUseFileUploader;
     onFileChosen(window: Window): void;
-    downloadFile(repositoryId: string, fileName: string): void;
+    downloadFile(message: Message): void;
+    goToRepo(window: Window, message: Message): void;
 }
