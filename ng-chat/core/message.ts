@@ -9,6 +9,7 @@ export class Message
     public dateSent?: Date;
     public dateSeen?: Date;
     public repositoryId?: string;
+    public attachmentName?: string;
     public repositorySrcUri?: string;
     public groupId?: string;
     public randomId?: string;

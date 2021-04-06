@@ -819,7 +819,7 @@ export class NgChat implements OnInit, IChatController {
         this.beforeParteciantChatClosed = func;
     }
 
-    onDownloadFile(repositoryId: string) {
-      this.adapter.downloadFile(repositoryId);
+    onDownloadFile(params: {repositoryId: string, fileName: string}) {
+      this.adapter.downloadFile(params.repositoryId, params.fileName);
     }
 }

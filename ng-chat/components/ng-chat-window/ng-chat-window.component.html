@@ -62,7 +62,7 @@
 						<span *ngIf="message.fileSizeInBytes"  class="file-message-size">{{message.fileSizeInBytes}} Bytes</span>
           </a>
           <div *ngIf="message.repositoryId">
-            <button (click)="downloadFile(message.repositoryId)">SCARICA</button>
+            <button (click)="downloadFile(message.repositoryId, message.attachmentName ? message.attachmentName : message.message)">SCARICA</button>
             <span class="file-message-title" [attr.title]="message.message">{{message.message}}</span>
           </div>
 				</div>

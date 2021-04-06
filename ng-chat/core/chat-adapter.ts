@@ -14,7 +14,7 @@ export abstract class ChatAdapter
 
     public abstract sendMessage(message: Message): void;
 
-    public abstract downloadFile(repositoryId: string): void;
+    public abstract downloadFile(repositoryId: string, fileName: string): void;
 
     // ### Adapter/Chat income/ingress events ###
 

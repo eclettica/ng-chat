@@ -132,5 +132,8 @@ export declare class NgChat implements OnInit, IChatController {
     triggerCloseChatWindow(userId: any): void;
     triggerToggleChatWindowVisibility(userId: any): void;
     setBeforeParteciantChatClosed(func: any): void;
-    onDownloadFile(repositoryId: string): void;
+    onDownloadFile(params: {
+        repositoryId: string;
+        fileName: string;
+    }): void;
 }

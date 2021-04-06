@@ -92,7 +92,7 @@ export class NgChatWindowComponent implements OnInit {
     public onLoadHistoryTriggered: EventEmitter<Window> = new EventEmitter();
 
     @Output()
-    public onDownloadFile: EventEmitter<string> = new EventEmitter();
+    public onDownloadFile: EventEmitter<{repositoryId: string, fileName: string}> = new EventEmitter();
 
     @ViewChild('chatMessages') chatMessages: any;
     @ViewChild('nativeFileInput') nativeFileInput: ElementRef;
@@ -352,7 +352,7 @@ export class NgChatWindowComponent implements OnInit {
         }
     }
 
-    downloadFile(repositoryId: string) {
-      this.onDownloadFile.emit(repositoryId);
+    downloadFile(repositoryId: string, fileName: string) {
+      this.onDownloadFile.emit({repositoryId, fileName});
     }
 }

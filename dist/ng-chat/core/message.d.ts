@@ -7,6 +7,7 @@ export declare class Message {
     dateSent?: Date;
     dateSeen?: Date;
     repositoryId?: string;
+    attachmentName?: string;
     repositorySrcUri?: string;
     groupId?: string;
     randomId?: string;
