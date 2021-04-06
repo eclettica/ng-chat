@@ -40,6 +40,7 @@ export declare class NgChatWindowComponent implements OnInit {
     }>;
     onOptionTriggered: EventEmitter<IChatOption>;
     onLoadHistoryTriggered: EventEmitter<Window>;
+    onDownloadFile: EventEmitter<string>;
     chatMessages: any;
     nativeFileInput: ElementRef;
     chatWindowInput: any;
@@ -66,4 +67,5 @@ export declare class NgChatWindowComponent implements OnInit {
     onChatWindowClicked(window: Window): void;
     private clearInUseFileUploader;
     onFileChosen(window: Window): void;
+    downloadFile(repositoryId: string): void;
 }

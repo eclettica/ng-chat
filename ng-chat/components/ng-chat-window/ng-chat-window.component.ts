@@ -30,12 +30,12 @@ export class NgChatWindowComponent implements OnInit {
      //windowOptions: WindowOption | null;
 
      ngOnInit() {
-        if(this.window 
+        if(this.window
             && this.window.participant
             && this.window.participant.windowOptions
             && this.window.participant.windowOptions.windowClass)
          this.windowClass =  this.window.participant.windowOptions.windowClass;
-         
+
          if(this.windowClass == undefined || this.windowClass == null)
             this.windowClass ='';
      }
@@ -55,10 +55,10 @@ export class NgChatWindowComponent implements OnInit {
     @Input()
     public showOptions: boolean;
 
-    @Input()    
+    @Input()
     public emojisEnabled: boolean = true;
 
-    @Input()    
+    @Input()
     public linkfyEnabled: boolean = true;
 
     @Input()
@@ -90,6 +90,9 @@ export class NgChatWindowComponent implements OnInit {
 
     @Output()
     public onLoadHistoryTriggered: EventEmitter<Window> = new EventEmitter();
+
+    @Output()
+    public onDownloadFile: EventEmitter<string> = new EventEmitter();
 
     @ViewChild('chatMessages') chatMessages: any;
     @ViewChild('nativeFileInput') nativeFileInput: ElementRef;
@@ -187,12 +190,12 @@ export class NgChatWindowComponent implements OnInit {
         {
             return `ng-chat-file-upload-${window.participant.id}`;
         }
-        
+
         return 'ng-chat-file-upload';
     }
 
     unreadMessagesTotal(window: Window): string
-    {           
+    {
         return MessageCounter.unreadMessagesTotal(window, this.userId);
     }
 
@@ -206,7 +209,7 @@ export class NgChatWindowComponent implements OnInit {
                     let position = ( direction === ScrollDirection.Top ) ? 0 : element.scrollHeight;
                     element.scrollTop = position;
                 }
-            }); 
+            });
         }
     }
 
@@ -229,9 +232,9 @@ export class NgChatWindowComponent implements OnInit {
         window.hasFocus = !window.hasFocus;
         if(window.hasFocus) {
             const unreadMessages = window.messages
-                .filter(message => message.dateSeen == null 
+                .filter(message => message.dateSeen == null
                     && (message.toId == this.userId || window.participant.participantType === ChatParticipantType.Group));
-            
+
             if (unreadMessages && unreadMessages.length > 0)
             {
                 this.onMessagesSeen.emit(unreadMessages);
@@ -239,7 +242,7 @@ export class NgChatWindowComponent implements OnInit {
         }
     }
 
-    markMessagesAsRead(messages: Message[]): void 
+    markMessagesAsRead(messages: Message[]): void
     {
         this.onMessagesSeen.emit(messages);
     }
@@ -249,7 +252,7 @@ export class NgChatWindowComponent implements OnInit {
     }
 
     // Closes a chat window via the close 'X' button
-    onCloseChatWindow(): void 
+    onCloseChatWindow(): void
     {
         this.onChatWindowClosed.emit({ closedWindow: this.window, closedViaEscapeKey: false });
     }
@@ -267,18 +270,18 @@ export class NgChatWindowComponent implements OnInit {
                if (window.newMessage && window.newMessage.trim() != "")
                {
                    let message = new Message();
-            
+
                    message.fromId = this.userId;
                    message.toId = window.participant.id;
                    message.message = window.newMessage;
                    message.dateSent = new Date();
-       
+
                    window.messages.push(message);
-       
+
                    this.onMessageSent.emit(message);
-       
+
                    window.newMessage = ""; // Resets the new message input
-       
+
                    this.scrollChatWindow(window, ScrollDirection.Bottom);
                }
                break;
@@ -329,11 +332,11 @@ export class NgChatWindowComponent implements OnInit {
 
                     fileMessage.fromId = this.userId;
 
-                    // Push file message to current user window   
+                    // Push file message to current user window
                     window.messages.push(fileMessage);
-        
+
                     this.onMessageSent.emit(fileMessage);
-        
+
                     this.scrollChatWindow(window, ScrollDirection.Bottom);
 
                     // Resets the file upload element
@@ -347,5 +350,9 @@ export class NgChatWindowComponent implements OnInit {
                     // TODO: Invoke a file upload adapter error here
                 });
         }
+    }
+
+    downloadFile(repositoryId: string) {
+      this.onDownloadFile.emit(repositoryId);
     }
 }

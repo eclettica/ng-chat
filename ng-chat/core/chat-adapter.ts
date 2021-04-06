@@ -9,10 +9,12 @@ export abstract class ChatAdapter
     // ### Abstract adapter methods ###
 
     public abstract listFriends(): Observable<ParticipantResponse[]>;
-    
+
     public abstract getMessageHistory(destinataryId: any): Observable<Message[]>;
 
     public abstract sendMessage(message: Message): void;
+
+    public abstract downloadFile(repositoryId: string): void;
 
     // ### Adapter/Chat income/ingress events ###
 
@@ -25,7 +27,7 @@ export abstract class ChatAdapter
     {
         this.messageReceivedHandler(participant, message);
     }
-    
+
     // Event handlers
     /** @internal */
     friendsListChangedHandler: (participantsResponse: ParticipantResponse[]) => void  = (participantsResponse: ParticipantResponse[]) => {};
