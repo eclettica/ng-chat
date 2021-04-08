@@ -54,17 +54,17 @@
 					<span *ngIf="showMessageDate && message.dateSent" class="message-sent-date">{{message.dateSent | date:messageDatePipeFormat}}</span>
 				</div>
 				<div *ngSwitchCase="MessageType.File" [ngClass]="{'file-message-container': true, 'received': message.fromId != userId}">
-					<div class="file-message-icon-container">
+					<!-- <div class="file-message-icon-container">
 						<i class="paperclip-icon"></i>
-					</div>
+					</div> -->
 					<a *ngIf="!message.repositoryId" class="file-details" [attr.href]="message.downloadUrl" target="_blank" rel="noopener noreferrer" (click)="this.markMessagesAsRead([message])" download>
 						<span class="file-message-title" [attr.title]="message.message">{{message.message}}</span>
 						<span *ngIf="message.fileSizeInBytes"  class="file-message-size">{{message.fileSizeInBytes}} Bytes</span>
           </a>
           <div *ngIf="message.repositoryId">
             <button (click)="downloadFile(message)" mat-flat-button class="download-button">SCARICA</button>
-            <span class="file-message-title" [attr.title]="message.message">{{message.message}}</span>
             <button (click)="goToRepo(window, message)" mat-flat-button class="download-button">REPO</button>
+            <div class="file-message-title" [attr.title]="message.message">{{message.message}}</div>
           <div>
             <span *ngIf="showMessageDate && message.dateSent" class="message-sent-date">{{message.dateSent | date:messageDatePipeFormat}}</span>
           </div>
