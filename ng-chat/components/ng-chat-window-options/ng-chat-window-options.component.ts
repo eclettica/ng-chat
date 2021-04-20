@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { IChatOption } from '../../core/chat-option';
 import { WindowOption } from '../../core/window-option';
 import { WindowButton } from '../../core/window-button';
+import { Window } from '../../core/window';
 
 @Component({
     selector: 'ng-chat-window-options',
@@ -11,7 +12,7 @@ import { WindowButton } from '../../core/window-button';
 export class NgChatWindowOptionsComponent {
 	//buttons: WindowButton[] | undefined;
 
-	constructor() { 
+	constructor() {
 		//this.buttons = this.options.buttons;
 	}
 
@@ -27,19 +28,22 @@ export class NgChatWindowOptionsComponent {
 	public options: WindowOption;
 
 	@Input()
-	public activeOptionTracker: WindowOption;
+  public activeOptionTracker: WindowOption;
+
+  @Input()
+	public window: Window;
 
 	@Output()
 	public activeOptionTrackerChange: EventEmitter<WindowOption> = new EventEmitter<WindowOption>();
 
 	onOptionClicked(option: WindowOption, button: WindowButton): void
 	{
-		if (button.action) {    
+		if (button.action) {
 			if(button.enableButton) {
-				if(!button.enableButton(option.chattingTo.participant))
+				if(!button.enableButton(this.window.participant))
 					return;
 			}
-			button.action(option.chattingTo);   
+			button.action(this.window);
 		}
 		if(this.activeOptionTrackerChange)
 			this.activeOptionTrackerChange.emit(option);

@@ -19,7 +19,7 @@
 			<span [ngClass]="{'ng-chat-participant-status': true, 'online': window.participant.status == ChatParticipantStatus.Online, 'busy': window.participant.status == ChatParticipantStatus.Busy, 'away': window.participant.status == ChatParticipantStatus.Away, 'offline': window.participant.status == ChatParticipantStatus.Offline}" title="{{chatParticipantStatusDescriptor(window.participant.status, localization)}}"></span>
 			<span *ngIf="unreadMessagesTotal(window).length > 0" class="ng-chat-unread-messages-count unread-messages-counter-container primary-text">{{unreadMessagesTotal(window)}}</span>
 		</div>
-		<ng-chat-window-options *ngIf="window?.participant?.windowOptions?.buttons" [ngClass]="{'ng-chat-options-container' : window.participant.windowOptions.buttons.length > 2, 'ng-chat-options-container-reduced': window.participant.windowOptions.buttons.length < 3 }" [options]="window?.participant?.windowOptions"></ng-chat-window-options>
+		<ng-chat-window-options *ngIf="window?.participant?.windowOptions?.buttons" [ngClass]="{'ng-chat-options-container' : window.participant.windowOptions.buttons.length > 2, 'ng-chat-options-container-reduced': window.participant.windowOptions.buttons.length < 3 }" [options]="window?.participant?.windowOptions" [window]="window"></ng-chat-window-options>
 		<a href="javascript:void(0);" class="ng-chat-close primary-text" (click)="onCloseChatWindow()">X</a>
 		<ng-chat-options [ngClass]="'ng-chat-options-container'" [options]="defaultWindowOptions(window)" (activeOptionTrackerChange)="activeOptionTrackerChange($event)"></ng-chat-options>
 	</div>
