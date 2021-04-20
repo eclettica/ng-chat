@@ -48,8 +48,12 @@
     color: #bababa
 }
 
+.ng-chat-options-content a.hidden {
+  display: none !important;
+}
+
 /* Mobile viewport only */
-@media only screen and (max-width: 581px) { 
+@media only screen and (max-width: 581px) {
     .ng-chat-options-content {
         right: 0;
     }

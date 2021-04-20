@@ -6,4 +6,5 @@ export declare class WindowButton {
     icon: string;
     action?: (chattingTo: Window) => void;
     enableButton?: (participant: IChatParticipant) => boolean;
+    showButton?: (participant: IChatParticipant) => boolean;
 }
