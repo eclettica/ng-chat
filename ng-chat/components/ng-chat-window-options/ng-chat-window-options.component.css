@@ -49,7 +49,7 @@
 }
 
 .ng-chat-options-content a.hidden {
-  display: none !important;
+  /* display: none !important; */
 }
 
 /* Mobile viewport only */

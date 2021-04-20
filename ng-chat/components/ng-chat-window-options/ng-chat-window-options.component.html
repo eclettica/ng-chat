@@ -11,7 +11,7 @@
 		</button>
 	<div class="ng-chat-options-content primary-background shadowed">
     <a *ngFor="let button of options?.buttons; let i = index"
-    [ngClass]="{'primary-text': true, 'disabled': button.enableButton(options.chattingTo.participant) == false, 'hidden': !button.showButton || button.showButton(options.chattingTo.participant) == false }"
+    [ngClass]="{'primary-text': true, 'disabled': button.enableButton(window.participant) == false, 'hidden': !button.showButton || button.showButton(window.participant) == false }"
     (click)="onOptionClicked(options, button)">
 			<mat-icon *ngIf="button.showIcon" class="material-icons">{{button.icon}}</mat-icon>
 			<span *ngIf="!button.showIcon" class="material-icons">{{button.title}}</span>
