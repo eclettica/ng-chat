@@ -330,7 +330,7 @@ export class NgChatWindowComponent implements OnInit {
 
             this.fileUploadersInUse.push(fileUploadInstanceId);
 
-            this.fileUploadAdapter.uploadFile(file, window.participant.id)
+            this.fileUploadAdapter.uploadFile(file, window.participant.id, window)
                 .subscribe(fileMessage => {
                     this.clearInUseFileUploader(fileUploadInstanceId);
 

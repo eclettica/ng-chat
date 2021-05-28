@@ -11,4 +11,6 @@ export declare class Message {
     repositorySrcUri?: string;
     groupId?: string;
     randomId?: string;
+    fileId?: string;
+    fileName?: string;
 }

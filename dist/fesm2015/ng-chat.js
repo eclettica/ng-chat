@@ -148,7 +148,7 @@ class DefaultFileUploadAdapter {
         this._serverEndpointUrl = _serverEndpointUrl;
         this._http = _http;
     }
-    uploadFile(file, participantId) {
+    uploadFile(file, participantId, window) {
         const formData = new FormData();
         //formData.append('ng-chat-sender-userid', currentUserId);
         formData.append('ng-chat-participant-id', participantId);
@@ -1358,7 +1358,7 @@ let NgChatWindowComponent = class NgChatWindowComponent {
         if (uploadElementRef) {
             const file = uploadElementRef.nativeElement.files[0];
             this.fileUploadersInUse.push(fileUploadInstanceId);
-            this.fileUploadAdapter.uploadFile(file, window.participant.id)
+            this.fileUploadAdapter.uploadFile(file, window.participant.id, window)
                 .subscribe(fileMessage => {
                 this.clearInUseFileUploader(fileUploadInstanceId);
                 fileMessage.fromId = this.userId;

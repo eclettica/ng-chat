@@ -13,4 +13,6 @@ export class Message
     public repositorySrcUri?: string;
     public groupId?: string;
     public randomId?: string;
+    public fileId?: string;
+    public fileName?: string;
 }

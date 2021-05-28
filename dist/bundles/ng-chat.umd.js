@@ -386,7 +386,7 @@
             this._serverEndpointUrl = _serverEndpointUrl;
             this._http = _http;
         }
-        DefaultFileUploadAdapter.prototype.uploadFile = function (file, participantId) {
+        DefaultFileUploadAdapter.prototype.uploadFile = function (file, participantId, window) {
             var formData = new FormData();
             //formData.append('ng-chat-sender-userid', currentUserId);
             formData.append('ng-chat-participant-id', participantId);
@@ -1666,7 +1666,7 @@
             if (uploadElementRef) {
                 var file = uploadElementRef.nativeElement.files[0];
                 this.fileUploadersInUse.push(fileUploadInstanceId);
-                this.fileUploadAdapter.uploadFile(file, window.participant.id)
+                this.fileUploadAdapter.uploadFile(file, window.participant.id, window)
                     .subscribe(function (fileMessage) {
                     _this.clearInUseFileUploader(fileUploadInstanceId);
                     fileMessage.fromId = _this.userId;
