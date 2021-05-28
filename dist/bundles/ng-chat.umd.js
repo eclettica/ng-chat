@@ -531,7 +531,7 @@
                     this.activateFriendListFetch();
                     this.bufferAudioFile();
                     this.hasPagedHistory = this.adapter instanceof PagedHistoryChatAdapter;
-                    if (this.fileUploadUrl && this.fileUploadUrl !== "") {
+                    if (!this.fileUploadAdapter && this.fileUploadUrl && this.fileUploadUrl !== "") {
                         this.fileUploadAdapter = new DefaultFileUploadAdapter(this.fileUploadUrl, this._httpClient);
                     }
                     this.NormalizeWindows();
@@ -968,6 +968,9 @@
         __decorate([
             core.Input()
         ], NgChat.prototype, "groupAdapter", void 0);
+        __decorate([
+            core.Input()
+        ], NgChat.prototype, "fileUploadAdapter", void 0);
         __decorate([
             core.Input()
         ], NgChat.prototype, "userId", void 0);

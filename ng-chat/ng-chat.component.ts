@@ -72,6 +72,10 @@ export class NgChat implements OnInit, IChatController {
     @Input()
     public groupAdapter: IChatGroupAdapter;
 
+    // File upload adapter
+    @Input()
+    public fileUploadAdapter: IFileUploadAdapter;
+
     @Input()
     public userId: any;
 
@@ -214,9 +218,6 @@ export class NgChat implements OnInit, IChatController {
     // Set to true if there is no space to display at least one chat window and 'hideFriendsListOnUnsupportedViewport' is true
     public unsupportedViewport: boolean = false;
 
-    // File upload adapter
-    public fileUploadAdapter: IFileUploadAdapter;
-
     windows: Window[] = [];
     isBootstrapped: boolean = false;
 
@@ -275,7 +276,7 @@ export class NgChat implements OnInit, IChatController {
 
                 this.hasPagedHistory = this.adapter instanceof PagedHistoryChatAdapter;
 
-                if (this.fileUploadUrl && this.fileUploadUrl !== "")
+                if (!this.fileUploadAdapter && this.fileUploadUrl && this.fileUploadUrl !== "")
                 {
                     this.fileUploadAdapter = new DefaultFileUploadAdapter(this.fileUploadUrl, this._httpClient);
                 }

@@ -27,6 +27,7 @@ export declare class NgChat implements OnInit, IChatController {
     set isDisabled(value: boolean);
     adapter: ChatAdapter;
     groupAdapter: IChatGroupAdapter;
+    fileUploadAdapter: IFileUploadAdapter;
     userId: any;
     isCollapsed: boolean;
     maximizeWindowOnNewMessage: boolean;
@@ -78,7 +79,6 @@ export declare class NgChat implements OnInit, IChatController {
     friendsListWidth: number;
     private viewPortTotalArea;
     unsupportedViewport: boolean;
-    fileUploadAdapter: IFileUploadAdapter;
     windows: Window[];
     isBootstrapped: boolean;
     chatWindows: QueryList<NgChatWindowComponent>;
