@@ -391,8 +391,10 @@ export class NgChat implements OnInit, IChatController {
         if (this.adapter instanceof PagedHistoryChatAdapter)
         {
             window.isLoadingHistory = true;
-
-            this.adapter.getMessageHistoryByPage(window.participant.id, this.historyPageSize, ++window.historyPage)
+            const lastTimestamp = window.messages && window.messages[window.messages.length -1 ] && window.messages[window.messages.length -1 ].dateSent ?
+                window.messages[window.messages.length -1 ].dateSent?.getTime() : null;
+        
+            this.adapter.getMessageHistoryByPage(window.participant.id, this.historyPageSize, ++window.historyPage, lastTimestamp)
             .pipe(
                 map((result: Message[]) => {
                     result.forEach((message) => this.assertMessageType(message));

@@ -368,10 +368,12 @@ let NgChat = class NgChat {
         });
     }
     fetchMessageHistory(window) {
+        var _a;
         // Not ideal but will keep this until we decide if we are shipping pagination with the default adapter
         if (this.adapter instanceof PagedHistoryChatAdapter) {
             window.isLoadingHistory = true;
-            this.adapter.getMessageHistoryByPage(window.participant.id, this.historyPageSize, ++window.historyPage)
+            const lastTimestamp = window.messages && window.messages[window.messages.length - 1] && window.messages[window.messages.length - 1].dateSent ? (_a = window.messages[window.messages.length - 1].dateSent) === null || _a === void 0 ? void 0 : _a.getTime() : null;
+            this.adapter.getMessageHistoryByPage(window.participant.id, this.historyPageSize, ++window.historyPage, lastTimestamp)
                 .pipe(map((result) => {
                 result.forEach((message) => this.assertMessageType(message));
                 window.messages = result.concat(window.messages);

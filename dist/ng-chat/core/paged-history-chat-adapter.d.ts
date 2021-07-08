@@ -6,5 +6,5 @@ import { ChatAdapter } from "./chat-adapter";
  * You will need an existing @see ChatAdapter implementation
  */
 export declare abstract class PagedHistoryChatAdapter extends ChatAdapter {
-    abstract getMessageHistoryByPage(destinataryId: any, size: number, page: number): Observable<Message[]>;
+    abstract getMessageHistoryByPage(destinataryId: any, size: number, page: number, lastTimestamp?: number | null | undefined): Observable<Message[]>;
 }
