@@ -372,9 +372,9 @@ let NgChat = class NgChat {
         if (this.adapter instanceof PagedHistoryChatAdapter) {
             window.isLoadingHistory = true;
             let lastTimestamp = null;
-            if (window.messages && window.messages[window.messages.length - 1] && window.messages[window.messages.length - 1].dateSent)
-                lastTimestamp = window.messages[window.messages.length - 1].dateSent.getTime();
-            this.adapter.getMessageHistoryByPage(window.participant.id, this.historyPageSize, ++window.historyPage, lastTimestamp)
+            // if(window.messages && window.messages[window.messages.length -1 ] && window.messages[window.messages.length -1 ].dateSent)
+            //     lastTimestamp = window.messages[window.messages.length -1 ].dateSent.getTime();
+            this.adapter.getMessageHistoryByPage(window.participant.id, this.historyPageSize, ++window.historyPage, window)
                 .pipe(map((result) => {
                 result.forEach((message) => this.assertMessageType(message));
                 window.messages = result.concat(window.messages);
