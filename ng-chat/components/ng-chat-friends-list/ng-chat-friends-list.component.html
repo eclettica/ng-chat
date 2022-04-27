@@ -26,7 +26,7 @@
 					<i class="user-icon"></i>
 				</div>
 				<img *ngIf="user.avatar" alt="" class="avatar" height="30" width="30"  [src]="user.avatar | sanitize"/>
-				<img *ngIf="user.avatarSrc" alt="" class="avatar" height="30" width="30"  [src]="user.avatarSrc | secure | async"/>
+				<img *ngIf="user.avatarSrc" alt="" class="avatar" height="30" width="30"  [src]="user.avatarSrc | secure:true | async"/>
 				<strong title="{{user.displayName}}">{{user.displayName}}</strong>
 				<span [ngClass]="{'ng-chat-participant-status': true, 'online': user.status == ChatParticipantStatus.Online, 'busy': user.status == ChatParticipantStatus.Busy, 'away': user.status == ChatParticipantStatus.Away, 'offline': user.status == ChatParticipantStatus.Offline}" title="{{chatParticipantStatusDescriptor(user.status, localization)}}"></span>
 				<span *ngIf="unreadMessagesTotalByParticipant(user).length > 0" class="ng-chat-unread-messages-count unread-messages-counter-container primary-text">{{unreadMessagesTotalByParticipant(user)}}</span>
