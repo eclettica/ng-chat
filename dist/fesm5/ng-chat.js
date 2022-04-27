@@ -1341,6 +1341,8 @@ var NgChatWindowComponent = /** @class */ (function () {
         }
         else if (participant.participantType == ChatParticipantType.Group) {
             var group = participant;
+            if (!group || !group.chattingTo)
+                return null;
             var userIndex = group.chattingTo.findIndex(function (x) { return x.id == message.fromId; });
             return group.chattingTo[userIndex >= 0 ? userIndex : 0].avatar;
         }

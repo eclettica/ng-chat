@@ -155,6 +155,8 @@ export class NgChatWindowComponent implements OnInit {
         else if (participant.participantType == ChatParticipantType.Group)
         {
             let group = participant as Group;
+            if(!group || !group.chattingTo)
+                return null;
             let userIndex = group.chattingTo.findIndex(x => x.id == message.fromId);
 
             return group.chattingTo[userIndex >= 0 ? userIndex : 0].avatar;
